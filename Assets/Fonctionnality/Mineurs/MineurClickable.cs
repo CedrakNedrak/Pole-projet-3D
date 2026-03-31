@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MineurClickable : Clickable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private GameObject cursor;
+    [SerializeField] private float speed = 0.1f;
+
     private bool stopCoroutine = false;
-    [SerializeField] private float speed =0.1f;
     private Vector3 endPosition;
-    public float Speed { get => speed; set => speed = value; }
     private List<int> indexTween = new List<int>();
+
+    public float Speed { get => speed; set => speed = value; }
 
     private void OnEnable() { MineurAction.OnCollision += StopTween; }
 
@@ -32,31 +34,45 @@ public class MineurClickable : Clickable
             }
             yield return null;
         }
-
         TakeEndPosition();
 
-        Vector3 beginingPosition = transform.position ;
-       
-        TweenManager.Add(new Tween(1f, t =>
-        {
-            transform.position = Vector3.Lerp(beginingPosition, endPosition, t);
-        }));
+        Quaternion offset = Quaternion.Euler(0, 180, -90);
 
-        indexTween.Add(TweenManager.NumberOfTweens()-1);
+        Vector3 direction = endPosition - transform.position;
+        direction.z= 0f;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation * offset;
+        transform.rotation = Quaternion.Euler(0,180,transform.rotation.z);
+        
 
+        transform.LookAt(endPosition);
+        StartTween();
         cursor.SetActive(false);
         stopCoroutine = false;
     }
 
     private void OnDisable() { MineurAction.OnCollision -= StopTween; }
 
-    void StopTween()
+    public void StopTween()
     {
         for (int i = 0; i < indexTween.Count; i++)
         {
             TweenManager.PausedTheTween(indexTween[i]);
         }
         Debug.Log("Hey");
+    }
+
+    public void StartTween()
+    {
+        Vector3 beginingPosition = transform.position;
+        float time = (endPosition - beginingPosition).magnitude / speed;
+
+        TweenManager.Add(new Tween(time, t =>
+        {
+            transform.position = Vector3.Lerp(beginingPosition, endPosition, t);
+        }));
+
+        indexTween.Add(TweenManager.NumberOfTweens() - 1);
     }
 
     private void TakeEndPosition()
@@ -71,4 +87,6 @@ public class MineurClickable : Clickable
         worldPosition.z = 0;
         endPosition = worldPosition;
     }
+
+    
 }

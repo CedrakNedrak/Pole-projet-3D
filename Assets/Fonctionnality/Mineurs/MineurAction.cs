@@ -16,8 +16,15 @@ public class MineurAction : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SetActive(false);
-        OnCollision?.Invoke();
+        StartCoroutine(WaitBeforeDestroying(collision.gameObject));
     }
 
+    public IEnumerator WaitBeforeDestroying(GameObject collision)
+    {
+        mineurClickable.StopTween();
+        yield return new WaitForSeconds(miningSpeed);
+        collision.SetActive(false);
+        mineurClickable.StartTween();
+       
+    }
 }
