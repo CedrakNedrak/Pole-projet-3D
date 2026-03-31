@@ -24,6 +24,9 @@ public class CameraMovement : MonoBehaviour
 
     private Vector3 lastDirection = Vector3.zero;
 
+    private bool isCameraMovementEnabled = true;
+    public bool IsCameraMovementEnabled => isCameraMovementEnabled;
+
     private Vector3 EdgeMovement(Vector3 lastDirection)
     {
         bool up = false;
@@ -112,9 +115,30 @@ public class CameraMovement : MonoBehaviour
         camera.orthographicSize = Mathf.Clamp(camera.orthographicSize - zoomSpeed * Time.deltaTime, minZoom, maxZoom);
     }
 
+    public void DisableCameraMovement()
+    {
+        isCameraMovementEnabled = false;
+        StopCamera();
+    }
+
+    public void EnableCameraMovement()
+    {
+        isCameraMovementEnabled = true;
+    }
+
+    private void StopCamera()
+    {
+        lastDirection = Vector3.zero;
+        scrollSpeed = Vector2.zero;
+        zoomSpeed = 0f;
+    }
+
     private void Update()
     {
-        lastDirection = EdgeMovement(lastDirection);
-        Zoom();
+        if (isCameraMovementEnabled)
+        {
+            lastDirection = EdgeMovement(lastDirection);
+            Zoom();
+        }
     }
 }
