@@ -1,12 +1,25 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public static class Motion 
 {
-    public static void CreateMotion(GameObject motion, Vector3 endPosition, float time)
+    public static IEnumerator Tween(System.Action<float> onUpdate, float duration)
     {
-        UpdateMotion upMotion = motion.AddComponent<UpdateMotion>();
-        upMotion.Init(endPosition, time);
+        float time = 0f;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            onUpdate?.Invoke(t);
+
+            yield return null;
+        }
+
+        onUpdate?.Invoke(1f);
     }
 
+   
 }
