@@ -122,7 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0793fda682964398d8001b7831d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 2757102018191011626, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  camera: {fileID: 2719834761090003937, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
 --- !u!114 &4912923680938044496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,4 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldPerSecond: 5
-  ressources: {fileID: 0}
+  ressources: {fileID: 6455988342443001663, guid: f05184be895686e4684b848e7338c5fe, type: 3}
