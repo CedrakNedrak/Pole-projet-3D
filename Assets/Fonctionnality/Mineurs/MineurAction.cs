@@ -12,19 +12,12 @@ public class MineurAction : MonoBehaviour
     private bool isMining;
     private Tilemap tilemap;
 
-    public void Start()
-    {
-    }
-
-
-    public void Update()
-    {
-        
-    }
+    public static event Action OnCollision ;
 
     public void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.SetActive(false);
+        OnCollision?.Invoke();
     }
 
 }

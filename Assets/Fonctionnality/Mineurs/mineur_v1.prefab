@@ -82,7 +82,7 @@ PrefabInstance:
       addedObject: {fileID: 4237141732560661}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7459764324485266387}
+      addedObject: {fileID: 7089034195450040365}
   m_SourcePrefab: {fileID: 100100000, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
 --- !u!1 &1642776669101629188 stripped
 GameObject:
@@ -139,7 +139,7 @@ MonoBehaviour:
   mineurClickable: {fileID: 4962710022047278515}
   miningSpeed: 0.2
   miningRange: 2
---- !u!54 &7459764324485266387
+--- !u!54 &7089034195450040365
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +164,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!4 &2127810093518570942 stripped
 Transform:
