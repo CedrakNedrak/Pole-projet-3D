@@ -41,10 +41,7 @@ public class Mineur : MonoBehaviour
         yield return new WaitForSeconds(pauseWhenMinining);
         collision.SetActive(false);
         StartTween();
-       
     }
-
-  
 
     public void StopTween()
     {
@@ -80,6 +77,7 @@ public class Mineur : MonoBehaviour
         worldPosition.z = 0;
         endPosition = worldPosition;
     }
+
     private void Rotate()
     {
         Vector3 direction = endPosition - transform.position;

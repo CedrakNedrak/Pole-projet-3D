@@ -6,29 +6,27 @@ using UnityEngine;
 public class MineurClickable : Clickable
 {
     [SerializeField] private GameObject cursor;
-    [SerializeField] private float speed = 0.1f;
     [SerializeField] private Mineur mineur;
 
-    private bool stopCoroutine = false;
-    public float Speed { get => speed; set => speed = value; }
+    private bool firstClick;
 
     public event Action StartMining;
     public override void OnClick() {
         cursor.SetActive(true);
-        StartCoroutine(WaitAnOtherClick());
+        firstClick = true;
     }
 
-    public IEnumerator WaitAnOtherClick()
+    public void Update()
     {
-        while (!stopCoroutine)
+        if (firstClick)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                stopCoroutine = true;
+
+                mineur.StartMining();
+                firstClick = false;
             }
-            yield return null;
         }
-        mineur.StartMining();
-        stopCoroutine = false;
     }
+ 
 }
