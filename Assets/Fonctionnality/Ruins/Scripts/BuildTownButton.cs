@@ -13,9 +13,8 @@ public class BuildTownButton : MonoBehaviour
         if (ressources.SpendGold(buildPrice))
         {
             Debug.Log("paid");
-            Vector3 position = new Vector3(0,0,0);
 
-            Instantiate(town, position, town.transform.rotation);
+            Instantiate(town, ruin.transform.position, town.transform.rotation);
             
             Destroy(transform.parent.gameObject);
             Destroy(ruin);
