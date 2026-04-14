@@ -1,14 +1,13 @@
-using Codice.CM.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Mineur : MonoBehaviour
 {
-    [SerializeField] private MineurClickable mineurClickable;
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
 
@@ -86,3 +85,4 @@ public class Mineur : MonoBehaviour
         transform.Rotate(0, 0, -alpha);
     }
 }
+

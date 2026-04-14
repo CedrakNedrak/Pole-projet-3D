@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 5282498773472374400}
-  speed: 10
   mineur: {fileID: 4237141732560661}
 --- !u!65 &8369632155689169060
 BoxCollider:
@@ -137,11 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5f2fbcdb3819d49bf92fb28bb74a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineurClickable: {fileID: 4962710022047278515}
   pauseWhenMinining: 0.5
   miningRange: 2
   cursor: {fileID: 4010664012274787153}
-  speed: 0.1
+  speed: 5
 --- !u!54 &7089034195450040365
 Rigidbody:
   m_ObjectHideFlags: 0
