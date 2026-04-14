@@ -1,6 +1,3 @@
-using Codice.Client.Common.GameUI;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,27 +6,31 @@ public class TileGenerator : MonoBehaviour
     [SerializeField] private CaverneGeneration caveGenerator;
     [SerializeField] private RuinsPlacer ruinsPlacer;
     [SerializeField] private FogOfWar fogOfWar;
+
     [SerializeField] private Tilemap tilemap;
     public Tilemap Tilemap => tilemap;
-    [SerializeField] private GameObject backgroundTile;
-    [SerializeField] private TileBase crystalTile;
 
-    [SerializeField] private int length;
-    [SerializeField] private int width;
-    
-    [UnityEngine.Range(0f,1f)]
+    [SerializeField] private GameObject backgroundTile;
+    [SerializeField] private TileBase wallLogicTile;
+
+    [SerializeField] private int length = 200;
+    [SerializeField] private int width = 200;
+
+    [Range(0f, 1f)]
     [SerializeField] private float crystalChance = 0.02f;
 
     public static TileGenerator tileGenerator;
+
     private GameObject[,] worldMatrice;
     public GameObject[,] WorldMatrice => worldMatrice;
-    void Awake()
+
+    private void Awake()
     {
         worldMatrice = new GameObject[width, length];
         tileGenerator = this;
     }
 
-    void Start()
+    private void Start()
     {
         GenerateTilemap();
         caveGenerator.GenerateCaves(tilemap);
@@ -37,7 +38,7 @@ public class TileGenerator : MonoBehaviour
         fogOfWar.InitializeFog();
     }
 
-    void GenerateTilemap()
+    private void GenerateTilemap()
     {
         tilemap.ClearAllTiles();
 
@@ -45,21 +46,19 @@ public class TileGenerator : MonoBehaviour
         {
             for (int y = 0; y < length; y++)
             {
-                Vector3Int position = new Vector3Int(x,y,0);
+                Vector3Int position = new Vector3Int(x, y, 0);
 
-                if (Random.value < crystalChance)
-                {
-                    GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
-                    worldMatrice[x,y] = gO;
-                }
-                else
-                {
-                    GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
-                    worldMatrice[x, y] = gO;
-                }
+                GameObject gO = Instantiate(
+                    backgroundTile,
+                    position,
+                    Quaternion.Euler(90f, 0f, 0f),
+                    transform
+                );
+
+                worldMatrice[x, y] = gO;
+
+                tilemap.SetTile(position, wallLogicTile);
             }
         }
-        Debug.Log(worldMatrice);
-    }        
-    
+    }
 }

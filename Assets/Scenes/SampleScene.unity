@@ -816,8 +816,8 @@ MonoBehaviour:
   worldMap: {fileID: 1341367779}
   darkFogMap: {fileID: 1526189688}
   softFogMap: {fileID: 1208422008}
-  darkFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
-  softFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
+  darkFogTile: {fileID: 11400000, guid: 5a499a688d93e7a4a95eb1c12a8c7062, type: 2}
+  softFogTile: {fileID: 11400000, guid: f091b1dd2a79ffe4d9de1f53388bb24d, type: 2}
   baseCell: {x: 0, y: 0, z: 0}
   baseNormalizedPos: {x: 0.5, y: 0.5}
   revealRadius: 2
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 1208422008}
   - component: {fileID: 1208422007}
   m_Layer: 0
-  m_Name: Tilemap (2)
+  m_Name: Softfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,7 +1061,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 1526189688}
   - component: {fileID: 1526189687}
   m_Layer: 0
-  m_Name: Tilemap (1)
+  m_Name: Darkfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1444,7 +1444,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

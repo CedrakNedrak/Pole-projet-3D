@@ -21,8 +21,15 @@ public class FogOfWar : MonoBehaviour
     [SerializeField] private bool useCircularReveal = true;
 
     private BoundsInt bounds;
+
     public void InitializeFog()
     {
+        if (worldMap == null || darkFogMap == null || softFogMap == null || darkFogTile == null || softFogTile == null)
+        {
+            Debug.LogError("FogOfWar : références manquantes.");
+            return;
+        }
+
         worldMap.CompressBounds();
         bounds = worldMap.cellBounds;
 
@@ -38,7 +45,7 @@ public class FogOfWar : MonoBehaviour
         foreach (Vector3Int pos in bounds.allPositionsWithin)
         {
             darkFogMap.SetTile(pos, darkFogTile);
-            softFogMap.SetTile(pos, null);;
+            softFogMap.SetTile(pos, null);
         }
 
         RefreshVisibility();
@@ -59,19 +66,16 @@ public class FogOfWar : MonoBehaviour
         {
             if (visibleCells.Contains(pos))
             {
-                // Visible total
                 darkFogMap.SetTile(pos, null);
                 softFogMap.SetTile(pos, null);
             }
             else if (softVisibleCells.Contains(pos))
             {
-                // Pénombre
                 darkFogMap.SetTile(pos, null);
                 softFogMap.SetTile(pos, softFogTile);
             }
             else
             {
-                // Noir total
                 darkFogMap.SetTile(pos, darkFogTile);
                 softFogMap.SetTile(pos, null);
             }
@@ -80,8 +84,8 @@ public class FogOfWar : MonoBehaviour
 
     private HashSet<Vector3Int> GetReachableCellsFromBase()
     {
-        HashSet<Vector3Int> visited = new HashSet<Vector3Int>();
-        Queue<Vector3Int> queue = new Queue<Vector3Int>();
+        HashSet<Vector3Int> visited = new();
+        Queue<Vector3Int> queue = new();
 
         if (!IsWalkable(baseCell))
             return visited;
@@ -89,7 +93,7 @@ public class FogOfWar : MonoBehaviour
         queue.Enqueue(baseCell);
         visited.Add(baseCell);
 
-        Vector3Int[] directions = new Vector3Int[]
+        Vector3Int[] directions =
         {
             new Vector3Int(1, 0, 0),
             new Vector3Int(-1, 0, 0),
@@ -105,14 +109,9 @@ public class FogOfWar : MonoBehaviour
             {
                 Vector3Int next = current + dir;
 
-                if (!bounds.Contains(next))
-                    continue;
-
-                if (visited.Contains(next))
-                    continue;
-
-                if (!IsWalkable(next))
-                    continue;
+                if (!bounds.Contains(next)) continue;
+                if (visited.Contains(next)) continue;
+                if (!IsWalkable(next)) continue;
 
                 visited.Add(next);
                 queue.Enqueue(next);
@@ -124,7 +123,7 @@ public class FogOfWar : MonoBehaviour
 
     private HashSet<Vector3Int> ExpandVisibleArea(HashSet<Vector3Int> sourceCells)
     {
-        HashSet<Vector3Int> expanded = new HashSet<Vector3Int>();
+        HashSet<Vector3Int> expanded = new();
 
         foreach (Vector3Int cell in sourceCells)
         {
@@ -155,6 +154,8 @@ public class FogOfWar : MonoBehaviour
 
     private bool IsWalkable(Vector3Int cell)
     {
+        // La tilemap logique contient seulement ce qui bloque.
+        // Ruines / villes n'y sont pas.
         return worldMap.GetTile(cell) == null;
     }
 
