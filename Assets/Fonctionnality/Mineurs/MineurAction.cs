@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,11 +10,14 @@ public class MineurAction : MonoBehaviour
     private bool isMining;
     private Tilemap tilemap;
 
-    public static event Action OnCollision ;
+    public static event Action OnCollision;
 
     public void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SetActive(false);
+        if (!(collision.gameObject.CompareTag("Miner")))
+        {
+            collision.gameObject.SetActive(false);
+        }
         OnCollision?.Invoke();
     }
 
