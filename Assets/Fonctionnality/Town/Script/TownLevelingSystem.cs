@@ -23,11 +23,11 @@ public class TownLevelingSystem : MonoBehaviour
         {
             townData.townUI.Initialize(townData);//update the UI, only happens when town is upgraded or ruin is built
         }
-
     }
 
     public void SetUpgradePrice(int price)
     {
+
         upgradePrice = price;
         if (townData.townUI.gameObject.activeSelf)
         {

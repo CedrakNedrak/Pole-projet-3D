@@ -18,15 +18,32 @@ public class TownUI : MonoBehaviour
     private GameObject purchaseMinerGameObject;
 
     public TownData townData { get; private set; }
+    private int townLevel;
 
     public void Initialize(TownData townData)
     {
         this.townData = townData;
         SetTownLevel(townData.TownLevelingSystem.TownLevel);
-        SetTownName(townData.TownName);
         SetGoldIncome(townData.TownGenerateGold.GoldIncome);
         SetMinerPrice(townData.SpawnMiner.MinerPrice);
         SetUpgradePrice(townData.TownLevelingSystem.UpgradePrice);
+        townLevel = townData.TownLevelingSystem.TownLevel;
+        if (townLevel == 0)
+        {
+            SetTownName(townData.InitialTownName);
+            DisableSpawn();
+            SetUpgradeText("Renovate Ruin", townData.TownLevelingSystem.UpgradePrice);
+            upgradeGameObject.transform.localPosition = new Vector3(0, -360, 0);
+            EnableUpgrade();
+        }
+        else
+        {
+            SetTownName(townData.TownName);
+            EnableSpawn();
+            SetUpgradeText("Upgrade Town", townData.TownLevelingSystem.UpgradePrice);
+            upgradeGameObject.transform.localPosition = new Vector3(600, -360, 0);
+            EnableUpgrade();
+        }
     }
 
     private void SetUpgradePrice(int upgradePrice)
@@ -61,6 +78,11 @@ public class TownUI : MonoBehaviour
     public void SetTownLevel(int level)
     {
         townLevelText.text = "Level " + level;
+    }
+
+    public void SetUpgradeText(string upgradeText, int upgradePrice)
+    {
+        upgradeTownText.text = upgradeText + "\n(" + upgradePrice.ToString() + " G)";
     }
 
     public void SetGoldIncome(int goldIncome)

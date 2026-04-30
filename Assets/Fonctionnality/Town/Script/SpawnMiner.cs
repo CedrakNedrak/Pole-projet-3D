@@ -7,15 +7,19 @@ public class SpawnMiner : MonoBehaviour
 
     [SerializeField] private int minerPrice = 50;
     public int MinerPrice => minerPrice;
-    private Vector3 spawnPosition = new Vector3(0, 0, 0);
+    private Vector3 spawnPosition;
+    [SerializeField] private float spawnDistance = 2f;
 
     public void Spawn()
     {
-        Debug.Log("there!");
         if (townData.ressources.SpendGold(minerPrice))
         {
-            Debug.Log("here!");
-            Instantiate(minerPrefab, spawnPosition, minerPrefab.transform.rotation);
+            Vector2 spawnDirection2D = Random.onUnitSphere;
+            Vector3 spawnDirection = new Vector3(spawnDirection2D.x, spawnDirection2D.y, 0);
+            spawnPosition = transform.position + spawnDirection * spawnDistance;
+            Debug.Log(Vector2.SignedAngle(Vector2.right, spawnDirection2D));
+            Quaternion spawnRotation = Quaternion.Euler(0, 180, -Vector2.SignedAngle(Vector2.right, spawnDirection2D));//180 because of prefab
+            Instantiate(minerPrefab, spawnPosition, spawnRotation);
         }
     }
 

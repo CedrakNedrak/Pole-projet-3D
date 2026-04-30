@@ -4,6 +4,8 @@ public class TownData : MonoBehaviour
 {
     [SerializeField] private string townName = "Cosy Cave";
     public string TownName => townName;
+    private string initialTownName;
+    public string InitialTownName => initialTownName;
     public GameObject townUICanvas { get; private set; }
     public TownUI townUI { get; private set; }
     [SerializeField] private TownLevelingSystem townLevelingSystem;
@@ -22,15 +24,17 @@ public class TownData : MonoBehaviour
         townName = name;
     }
 
-    public void Initialize(string name, int goldIncome, int level, int buildPrice, int minerPrice, int upgradePrice)
+    public void Initialize(string townName, int startGold, int goldIncome, int level, int buildPrice, int minerPrice, int upgradePrice, string initialTownName = "Abandoned Ruin")
     {
         ressources = FindAnyObjectByType<Ressources>();
-        SetTownName(name);
-        townGenerateGold.SetGoldIncome(goldIncome);
+        this.initialTownName = initialTownName;
+        SetTownName(townName);
         townLevelingSystem.SetTownLevel(level);
+        TownLevelingSystem.SetUpgradePrice(upgradePrice);
+        townGenerateGold.SetGoldIncome(goldIncome);
+        townGenerateGold.SetStartGold(startGold);
         buildTown.SetBuildPrice(buildPrice);
         SpawnMiner.SetMinerPrice(minerPrice);
-        TownLevelingSystem.SetUpgradePrice(upgradePrice);
     }
 
     public void InitializeReferences(GameObject townUICanvas, TownUI townUI, CameraMovement camera)

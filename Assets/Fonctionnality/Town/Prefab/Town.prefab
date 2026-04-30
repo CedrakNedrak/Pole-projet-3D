@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 6588953046390208416}
   m_Layer: 0
   m_Name: Town
-  m_TagString: Untagged
+  m_TagString: Town
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
-  camera: {fileID: 0}
 --- !u!114 &4912923680938044496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce9b7c79bdd1e145831f27f27acbb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGold: 200
   goldIncome: 60
   townData: {fileID: 2553929081644536717}
 --- !u!114 &2553929081644536717
@@ -155,8 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townName: Cosy Cave
-  townUICanvas: {fileID: 0}
-  townUI: {fileID: 0}
   townLevelingSystem: {fileID: 5296391341535975259}
   townGenerateGold: {fileID: 4912923680938044496}
   spawnMiner: {fileID: 101801839776644569}
@@ -176,6 +174,7 @@ MonoBehaviour:
   townData: {fileID: 2553929081644536717}
   minerPrefab: {fileID: 1642776669101629188, guid: 965f971520971be41899173fd795012e, type: 3}
   minerPrice: 40
+  spawnDistance: 2
 --- !u!114 &5296391341535975259
 MonoBehaviour:
   m_ObjectHideFlags: 0

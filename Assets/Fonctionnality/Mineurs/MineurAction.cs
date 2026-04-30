@@ -14,7 +14,7 @@ public class MineurAction : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (!(collision.gameObject.CompareTag("Miner")))
+        if (!(collision.gameObject.CompareTag("Miner")) && !(collision.gameObject.CompareTag("Town")))
         {
             collision.gameObject.SetActive(false);
         }
