@@ -9,8 +9,9 @@ public class CaverneGeneration : MonoBehaviour
     public Tilemap Tilemap => tilemap;
 
     private BoundsInt bounds;
-    private int width, height;
-
+    public int Width {get; private set; }
+    public int Height { get; private set; }
+    
     [Header("Salles (cavernes)")]
     [SerializeField] int roomCount = 8;
     [SerializeField] int roomRadiusMin = 5;
@@ -23,13 +24,14 @@ public class CaverneGeneration : MonoBehaviour
     //pour éviter que les salles se chevauchent trop
     [SerializeField] int roomPadding = 3;
 
-    private struct Room
+    public struct Room
     {
         public Vector2Int center;
         public int radius;
     }
 
     private List<Room> rooms = new List<Room>();
+    public List<Vector2Int> UsedRoom { get; set; } = new();
 
     public void GenerateCaves(Tilemap map)
     {
@@ -57,8 +59,8 @@ public class CaverneGeneration : MonoBehaviour
     // ------------- Lire la zone (bounds) -------------
     private void ReadTilemapBounds()
     {
-        width = 200;
-        height = 200;
+        Width = 200;
+        Height = 200;
     }
 
     // ------------- Générer UNIQUEMENT des salles (non connectées) -------------
@@ -68,8 +70,8 @@ public class CaverneGeneration : MonoBehaviour
 
         // A) Base/taverne garantie
         Vector2Int baseCenter = new Vector2Int(
-            Mathf.RoundToInt((width - 1) * baseNormalizedPos.x),
-            Mathf.RoundToInt((height - 1) * baseNormalizedPos.y)
+            Mathf.RoundToInt((Width - 1) * baseNormalizedPos.x),
+            Mathf.RoundToInt((Height - 1) * baseNormalizedPos.y)
         );
 
         Room baseRoom = new Room { center = baseCenter, radius = baseRadius };
@@ -87,8 +89,8 @@ public class CaverneGeneration : MonoBehaviour
             int r = Random.Range(roomRadiusMin, roomRadiusMax + 1);
 
             // éviter les bords pour que le cercle tienne dans la map
-            int x = Random.Range(r + 2, width - r - 2);
-            int y = Random.Range(r + 2, height - r - 2);
+            int x = Random.Range(r + 2, Width - r - 2);
+            int y = Random.Range(r + 2, Height - r - 2);
 
             Room newRoom = new Room { center = new Vector2Int(x, y), radius = r };
 
@@ -113,7 +115,7 @@ public class CaverneGeneration : MonoBehaviour
     }
 
     private bool InBounds(int x, int y)
-        => x >= 0 && y >= 0 && x < width && y < height;
+        => x >= 0 && y >= 0 && x < Width && y < Height;
 
     // Creuse une salle (cercle approx sur grille)
     private void CarveCircle(Vector2Int center, int radius)
