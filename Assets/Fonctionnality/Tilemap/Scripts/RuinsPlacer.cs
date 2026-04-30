@@ -33,6 +33,8 @@ public class RuinsPlacer : MonoBehaviour
         {
             if (Random.value > ruinRoomChance)
                 continue;
+            if (caveGen.UsedRoom.Contains(center))
+                continue;
 
             Vector3Int cell = new Vector3Int(
                 bounds.xMin + center.x,
@@ -40,6 +42,7 @@ public class RuinsPlacer : MonoBehaviour
                 0
             );
             Debug.Log($"Place ruin at cell {cell} | current tile = {map.GetTile(cell)}");
+            caveGen.UsedRoom.Add(new Vector2Int( cell.x, cell.y ));
             map.SetTile(cell, ruinTile);
             placed++;
         }

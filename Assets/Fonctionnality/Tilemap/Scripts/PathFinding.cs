@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 public class Pathfinding :MonoBehaviour
@@ -84,8 +83,22 @@ public class Pathfinding :MonoBehaviour
                         continue;
 
                     int newCost = current.gCost + grid[neighbor.x, neighbor.y];
+                    int turnPenalty = 0;
 
-                    if (newCost < neighbor.gCost || !openList.Contains(neighbor))
+                    if (current.parent != null)
+                    {
+                        int dx1 = current.x - current.parent.x;
+                        int dy1 = current.y - current.parent.y;
+
+                        int dx2 = neighbor.x - current.x;
+                        int dy2 = neighbor.y - current.y;
+
+                        if (dx1 != dx2 || dy1 != dy2)
+                            turnPenalty = 1; // pénalité de virage
+                    }
+
+                    newCost = current.gCost + grid[neighbor.x, neighbor.y] + 10 - turnPenalty;
+                if (newCost < neighbor.gCost || !openList.Contains(neighbor))
                     {
                         neighbor.gCost = newCost;
                         neighbor.hCost = Heuristic(neighbor, endNode);

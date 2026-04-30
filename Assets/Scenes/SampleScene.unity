@@ -521,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029201597}
   - component: {fileID: 1029201596}
+  - component: {fileID: 1029201598}
   m_Layer: 0
   m_Name: TweenManager
   m_TagString: Untagged
@@ -555,6 +556,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1029201598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029201595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c720b4e812b4f8d4f8a633d187233bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1046922565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -888,6 +901,7 @@ GameObject:
   - component: {fileID: 1082986188}
   - component: {fileID: 1082986187}
   - component: {fileID: 1082986186}
+  - component: {fileID: 1082986190}
   m_Layer: 0
   m_Name: TilemapManager
   m_TagString: Untagged
@@ -960,6 +974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveGenerator: {fileID: 1082986189}
   ruinsPlacer: {fileID: 1082986187}
+  enemyCaverneGeneration: {fileID: 1082986190}
   fogOfWar: {fileID: 1082986186}
   tilemap: {fileID: 1341367779}
   backgroundTile: {fileID: 6012646154510742146, guid: d90338145b086944186668b8e064ef74, type: 3}
@@ -985,6 +1000,21 @@ MonoBehaviour:
   baseRadius: 10
   baseNormalizedPos: {x: 0.5, y: 0.5}
   roomPadding: 3
+--- !u!114 &1082986190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082986184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28af3b600334c264f9ca88894ca76884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caveGen: {fileID: 1082986189}
+  ruinTile: {fileID: 11400000, guid: 5a499a688d93e7a4a95eb1c12a8c7062, type: 2}
+  numOfEnnemyBase: 3
 --- !u!1001 &1084080417
 PrefabInstance:
   m_ObjectHideFlags: 0

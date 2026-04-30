@@ -8,6 +8,7 @@ public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private CaverneGeneration caveGenerator;
     [SerializeField] private RuinsPlacer ruinsPlacer;
+    [SerializeField] private EnemyCaverneGeneration enemyCaverneGeneration;
     [SerializeField] private FogOfWar fogOfWar;
     [SerializeField] private Tilemap tilemap;
     public Tilemap Tilemap => tilemap;
@@ -36,6 +37,7 @@ public class TileGenerator : MonoBehaviour
     {
         GenerateTilemap();
         caveGenerator.GenerateCaves(tilemap);
+        enemyCaverneGeneration.PlaceEnemyBase();
         ruinsPlacer.PlaceRuins();
         fogOfWar.InitializeFog();
     }
