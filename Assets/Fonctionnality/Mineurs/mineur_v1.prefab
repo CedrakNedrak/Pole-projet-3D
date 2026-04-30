@@ -38,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d77a032e7dad2647b40cd7a6f427bcf, type: 3}
       propertyPath: m_Name
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 5282498773472374400}
-  speed: 1
+  mineur: {fileID: 4237141732560661}
 --- !u!65 &8369632155689169060
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -136,9 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5f2fbcdb3819d49bf92fb28bb74a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mineurClickable: {fileID: 4962710022047278515}
-  miningSpeed: 0.2
+  pauseWhenMinining: 0.5
   miningRange: 2
+  cursor: {fileID: 4010664012274787153}
+  speed: 5
 --- !u!54 &7089034195450040365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -283,6 +284,11 @@ PrefabInstance:
 --- !u!224 &1641710306342161094 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5884434826578470245, guid: 979bdb8c49287684fbcea4926bf3159a, type: 3}
+  m_PrefabInstance: {fileID: 5143445710632054691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4010664012274787153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8127182257357982962, guid: 979bdb8c49287684fbcea4926bf3159a, type: 3}
   m_PrefabInstance: {fileID: 5143445710632054691}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5282498773472374400 stripped
