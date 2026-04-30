@@ -135,6 +135,7 @@ public class CaverneGeneration : MonoBehaviour
                 if (cell.x < 200 && cell.x >= 0 && 0 <= cell.y && cell.y < 200)
                 {
                     GameObject go = TileGenerator.tileGenerator.WorldMatrice[cell.x, cell.y];
+                    TileGenerator.tileGenerator.WorldIntMatrice[cell.x, cell.y] = 1;
                     go.SetActive(false);
                 }
 
