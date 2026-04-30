@@ -22,10 +22,13 @@ public class TileGenerator : MonoBehaviour
 
     public static TileGenerator tileGenerator;
     private GameObject[,] worldMatrice;
+    private int[,] worldIntMatrice;
     public GameObject[,] WorldMatrice => worldMatrice;
+    public int[,] WorldIntMatrice => worldIntMatrice;
     void Awake()
     {
         worldMatrice = new GameObject[width, length];
+        worldIntMatrice = new int[width, length];
         tileGenerator = this;
     }
 
@@ -51,15 +54,16 @@ public class TileGenerator : MonoBehaviour
                 {
                     GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
                     worldMatrice[x,y] = gO;
+                    worldIntMatrice[x, y] = 2;
                 }
                 else
                 {
                     GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
                     worldMatrice[x, y] = gO;
+                    worldIntMatrice[x, y] = 2;
                 }
             }
         }
-        Debug.Log(worldMatrice);
     }        
     
 }
