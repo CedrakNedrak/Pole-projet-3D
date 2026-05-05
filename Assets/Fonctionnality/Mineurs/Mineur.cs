@@ -87,7 +87,6 @@ public class Mineur : MonoBehaviour
         StopTween();
 
         yield return new WaitForSeconds(pauseWhenMinining);
-<<<<<<< Fog3D-faites-que-se-soit-le-bon
 
         Vector3Int cell = new Vector3Int(
             Mathf.RoundToInt(collision.transform.position.x),
@@ -101,7 +100,12 @@ public class Mineur : MonoBehaviour
             fogOfWar.RefreshVisibility();
 
         if (path.Count >= 1)
->>>>>>>>> Temporary merge branch 2
+        collision.SetActive(false);
+        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
+        if (path.Count > tweenEnCours)
+        collision.SetActive(false);
+        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
+        if (path.Count > tweenEnCours)
         {
             Rotate();
             StartTween(path[tweenEnCours]);
