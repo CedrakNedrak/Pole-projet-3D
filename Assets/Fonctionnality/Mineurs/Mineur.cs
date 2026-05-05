@@ -60,9 +60,11 @@ public class Mineur : MonoBehaviour
         yield return new WaitForSeconds(pauseWhenMinining);
         collision.SetActive(false);
         TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
-        if (path.Count >= 1)
+        if (path.Count > tweenEnCours)
+        {
             Rotate();
             StartTween(path[tweenEnCours]);
+        }
     }
     
     public void StopTween()
