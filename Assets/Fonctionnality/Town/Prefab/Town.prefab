@@ -14,9 +14,13 @@ GameObject:
   - component: {fileID: 4076404506392906931}
   - component: {fileID: -1544134838016160852}
   - component: {fileID: 4912923680938044496}
+  - component: {fileID: 2553929081644536717}
+  - component: {fileID: 101801839776644569}
+  - component: {fileID: 5296391341535975259}
+  - component: {fileID: 6588953046390208416}
   m_Layer: 0
   m_Name: Town
-  m_TagString: Untagged
+  m_TagString: Town
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,8 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d0793fda682964398d8001b7831d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2757102018191011626, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
-  camera: {fileID: 2719834761090003937, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
+  townData: {fileID: 2553929081644536717}
 --- !u!114 &4912923680938044496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,5 +139,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce9b7c79bdd1e145831f27f27acbb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldPerSecond: 5
-  ressources: {fileID: 6455988342443001663, guid: f05184be895686e4684b848e7338c5fe, type: 3}
+  startGold: 200
+  goldIncome: 60
+  townData: {fileID: 2553929081644536717}
+--- !u!114 &2553929081644536717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140435764575868162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf5f6fdcab8d93459732f597cfda553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townName: Cosy Cave
+  townLevelingSystem: {fileID: 5296391341535975259}
+  townGenerateGold: {fileID: 4912923680938044496}
+  spawnMiner: {fileID: 101801839776644569}
+  buildTown: {fileID: 6588953046390208416}
+--- !u!114 &101801839776644569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140435764575868162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c065960c5bada46b9a7599cf9b5321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townData: {fileID: 2553929081644536717}
+  minerPrefab: {fileID: 1642776669101629188, guid: 965f971520971be41899173fd795012e, type: 3}
+  minerPrice: 40
+  spawnDistance: 2
+--- !u!114 &5296391341535975259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140435764575868162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88eec0e82705064089da7a8fcf99b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townData: {fileID: 2553929081644536717}
+  upgradePrice: 10
+  townLevel: 1
+--- !u!114 &6588953046390208416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140435764575868162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80f8698d21891d41b11394e0cae3961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townData: {fileID: 2553929081644536717}
+  townPrefab: {fileID: 9140435764575868162}
