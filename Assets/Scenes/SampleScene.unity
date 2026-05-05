@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caveGen: {fileID: 1082986189}
-  ruinTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
+  ruinGameObject: {fileID: 9140435764575868162, guid: 72eb1c43020b35b4ea09a115de219138, type: 3}
   ruinRoomChance: 0.4
 --- !u!114 &1082986188
 MonoBehaviour:
@@ -934,6 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveGenerator: {fileID: 1082986189}
   ruinsPlacer: {fileID: 1082986187}
+  enemyCaverneGeneration: {fileID: 0}
   fogOfWar: {fileID: 1082986186}
   tilemap: {fileID: 1341367779}
   backgroundTile: {fileID: 6012646154510742146, guid: d90338145b086944186668b8e064ef74, type: 3}

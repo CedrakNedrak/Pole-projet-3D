@@ -1,6 +1,3 @@
-using Codice.Client.Common.GameUI;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -17,8 +14,8 @@ public class TileGenerator : MonoBehaviour
 
     [SerializeField] private int length;
     [SerializeField] private int width;
-    
-    [UnityEngine.Range(0f,1f)]
+
+    [UnityEngine.Range(0f, 1f)]
     [SerializeField] private float crystalChance = 0.02f;
 
     public static TileGenerator tileGenerator;
@@ -37,7 +34,7 @@ public class TileGenerator : MonoBehaviour
     {
         GenerateTilemap();
         caveGenerator.GenerateCaves(tilemap);
-        enemyCaverneGeneration.PlaceEnemyBase();
+        //enemyCaverneGeneration.PlaceEnemyBase();
         ruinsPlacer.PlaceRuins();
         fogOfWar.InitializeFog();
     }
@@ -50,12 +47,12 @@ public class TileGenerator : MonoBehaviour
         {
             for (int y = 0; y < length; y++)
             {
-                Vector3Int position = new Vector3Int(x,y,0);
+                Vector3Int position = new Vector3Int(x, y, 0);
 
                 if (Random.value < crystalChance)
                 {
                     GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
-                    worldMatrice[x,y] = gO;
+                    worldMatrice[x, y] = gO;
                     worldIntMatrice[x, y] = 2;
                 }
                 else
@@ -66,6 +63,6 @@ public class TileGenerator : MonoBehaviour
                 }
             }
         }
-    }        
-    
+    }
+
 }

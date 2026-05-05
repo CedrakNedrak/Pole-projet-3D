@@ -1,26 +1,108 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 
 public class RuinsPlacer : MonoBehaviour
 {
     [Header("Références")]
     [SerializeField] private CaverneGeneration caveGen;
     private Tilemap map;
-    [SerializeField] private TileBase ruinTile;
+    [SerializeField] private GameObject ruinGameObject;
+    [SerializeField] private GameplayManager gameplayManager;
 
     [Header("Probabilité par salle (hors base)")]
     [Range(0f, 1f)]
-    [SerializeField] private float ruinRoomChance = 0.4f;
+    [SerializeField] private float ruinRoomChance = 0.6f;
 
-   
+    [Header("Noms des villes")]
+    private List<string> townNames = new List<string>
+    {
+    // Ancient & Mysterious
+    "Gloomhollow",
+    "Umbravale",
+    "Deepreach",
+    "Echoforge",
+    "Stonewhisper",
+    "Gravemarrow",
+    "Old Chasm",
+    "The Sunken Vault",
+    "Hollowspire",
+    "Blackroot Sanctum",
+
+    // Volcanic / Magma
+    "Emberdeep",
+    "Ashenhold",
+    "Moltrune",
+    "Pyrecradle",
+    "Cinderfall",
+    "Lavaheart Enclave",
+    "Smoldergate",
+    "Redrift Caverns",
+
+    // Crystal / Mineral
+    "Shardhaven",
+    "Gleamspire",
+    "Quartzreach",
+    "Lumengrotto",
+    "Opaline Ward",
+    "Crystalbarrow",
+    "Prismhall",
+    "Gemspire Refuge",
+
+    // Fungal / Bioluminescent
+    "Mireglow",
+    "Sporevale",
+    "Fungalrest",
+    "Glowmire",
+    "Mossreach",
+    "Mycoria",
+    "Shimmerfen",
+    "Bluecap Hollow",
+
+    // Dwarven / Industrial
+    "Ironburrow",
+    "Hammerdeep",
+    "Forgehold",
+    "Stonecrank",
+    "Gearhollow",
+    "Pickaxe Gate",
+    "Orehearth",
+    "Anvilroot",
+
+    // Creepy / Abandoned
+    "Whisperchasm",
+    "Forsaken Delve",
+    "The Lost Hollows",
+    "Grimshaft",
+    "Deadlight Cavern",
+    "Rotspire",
+    "Bleakmarrow",
+    "The Forgotten Pit",
+
+    // Magical / Arcane
+    "Aethergloom",
+    "Runeburrow",
+    "Spellrift",
+    "Arcane Hollow",
+    "Eldershade",
+    "Mystvale Below",
+    "Starless Sanctum",
+    "The Under-Archive"
+    };
 
     public void PlaceRuins()
     {
-        map = caveGen.Tilemap;
-        if (caveGen == null || map == null || ruinTile == null)
+        if (caveGen == null)
         {
-            Debug.LogError("[RuinsPlacer] Références manquantes !");
+            Debug.LogError("caveGen is missing!");
+            return;
+        }
+
+        map = caveGen.Tilemap;
+
+        if (map == null || ruinGameObject == null)
+        {
+            Debug.LogError("Missing references!");
             return;
         }
 
@@ -42,8 +124,9 @@ public class RuinsPlacer : MonoBehaviour
                 0
             );
             Debug.Log($"Place ruin at cell {cell} | current tile = {map.GetTile(cell)}");
-            caveGen.UsedRoom.Add(new Vector2Int( cell.x, cell.y ));
-            map.SetTile(cell, ruinTile);
+            caveGen.UsedRoom.Add(new Vector2Int(cell.x, cell.y));
+            string townName = townNames[Random.Range(0, townNames.Count)];
+            gameplayManager.SpawnTown(cell.ToWorldScale(), Quaternion.identity, townName, 0, 40, 0, 200, 40, 1000);
             placed++;
         }
 
