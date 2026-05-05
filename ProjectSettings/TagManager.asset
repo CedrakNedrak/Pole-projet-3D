@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Miner
-  - Town
+  - Undefined
+  - Map
   layers:
   - Default
   - TransparentFX

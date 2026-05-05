@@ -8,6 +8,7 @@ public class TileGenerator : MonoBehaviour
 {
     [SerializeField] private CaverneGeneration caveGenerator;
     [SerializeField] private RuinsPlacer ruinsPlacer;
+    [SerializeField] private EnemyCaverneGeneration enemyCaverneGeneration;
     [SerializeField] private FogOfWar fogOfWar;
     [SerializeField] private Tilemap tilemap;
     public Tilemap Tilemap => tilemap;
@@ -22,10 +23,13 @@ public class TileGenerator : MonoBehaviour
 
     public static TileGenerator tileGenerator;
     private GameObject[,] worldMatrice;
+    private int[,] worldIntMatrice;
     public GameObject[,] WorldMatrice => worldMatrice;
+    public int[,] WorldIntMatrice => worldIntMatrice;
     void Awake()
     {
         worldMatrice = new GameObject[width, length];
+        worldIntMatrice = new int[width, length];
         tileGenerator = this;
     }
 
@@ -33,6 +37,7 @@ public class TileGenerator : MonoBehaviour
     {
         GenerateTilemap();
         caveGenerator.GenerateCaves(tilemap);
+        enemyCaverneGeneration.PlaceEnemyBase();
         ruinsPlacer.PlaceRuins();
         fogOfWar.InitializeFog();
     }
@@ -51,15 +56,16 @@ public class TileGenerator : MonoBehaviour
                 {
                     GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
                     worldMatrice[x,y] = gO;
+                    worldIntMatrice[x, y] = 2;
                 }
                 else
                 {
                     GameObject gO = Instantiate(backgroundTile, position, Quaternion.Euler(90f, 0f, 0f), transform);
                     worldMatrice[x, y] = gO;
+                    worldIntMatrice[x, y] = 2;
                 }
             }
         }
-        Debug.Log(worldMatrice);
     }        
     
 }
