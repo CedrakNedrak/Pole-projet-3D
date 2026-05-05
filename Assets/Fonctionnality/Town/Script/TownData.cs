@@ -21,6 +21,22 @@ public class TownData : MonoBehaviour
     public BuildTown BuildTown => buildTown;
     public CameraMovement cameraMovement { get; private set; }
 
+
+    private void Start()
+    {
+        if (ressources == null)
+        ressources = FindObjectOfType<Ressources>();
+
+        if (townUI == null)
+        townUI = FindObjectOfType<TownUI>(true);
+
+        if (townUICanvas == null && townUI != null)
+            townUICanvas = townUI.gameObject;
+
+        if (cameraMovement == null)
+            cameraMovement = FindObjectOfType<CameraMovement>();
+    }
+
     public void SetTownName(string name)
     {
         townName = name;

@@ -23,6 +23,10 @@ public class CaverneGeneration : MonoBehaviour
 
     [SerializeField] private int roomPadding = 3;
 
+    [Header("Ville")]
+    [SerializeField] private GameObject cityPrefab;
+    [SerializeField] private float cityZ = 0f;
+
     public struct Room
     {
         public Vector2Int center;
@@ -76,6 +80,8 @@ public class CaverneGeneration : MonoBehaviour
         rooms.Add(baseRoom);
         UsedRoom.Add(baseCenter);
 
+        PlaceCity(baseCenter);
+
         int tries = 0;
         int created = 0;
 
@@ -96,6 +102,16 @@ public class CaverneGeneration : MonoBehaviour
             rooms.Add(newRoom);
             created++;
         }
+    }
+
+    private void PlaceCity(Vector2Int baseCenter)
+    {
+        if (cityPrefab == null)
+            return;
+
+        Vector3 position = new Vector3(baseCenter.x, baseCenter.y, cityZ);
+
+        Instantiate(cityPrefab, position, Quaternion.identity, transform);
     }
 
     private bool IsTooCloseToExistingRooms(Room candidate, int extraPadding)
