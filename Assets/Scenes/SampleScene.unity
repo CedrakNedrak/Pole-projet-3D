@@ -119,6 +119,65 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &44366508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4961505253476511679, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &124052167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124052169}
+  - component: {fileID: 124052168}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &124052168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124052167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73936bf738fbecb43b403dba3062f010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townPrefab: {fileID: 2553929081644536717, guid: 72eb1c43020b35b4ea09a115de219138, type: 3}
+  townUICanvas: {fileID: 1046922566}
+  townUI: {fileID: 1046922574}
+  camera: {fileID: 330585548}
+--- !u!4 &124052169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124052167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.627746, y: -1.6957278, z: -0.07379675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585548 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2719834761090003937, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
@@ -330,6 +389,28 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!114 &529267375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782438393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2049549182801809894, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,42 +479,26 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1029201596
+--- !u!114 &967180500 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3021789964481568444, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029201595}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3efa6b13ae21840afbab73774ad5c2, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1029201597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029201595}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1029201598
+--- !u!114 &974029699 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5401179541829990515, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029201595}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c720b4e812b4f8d4f8a633d187233bf1, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1046922565
@@ -444,6 +509,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 633122467347827019, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: townUI
+      value: 
+      objectReference: {fileID: 1046922574}
     - target: {fileID: 633122467347827019, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: ressources
       value: 
@@ -528,9 +597,17 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UpgradeTown, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2757102018191011626, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_Name
-      value: TownUI
+      value: TownsUI
       objectReference: {fileID: 0}
     - target: {fileID: 2757102018191011626, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_IsActive
@@ -560,6 +637,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 418
       objectReference: {fileID: 0}
+    - target: {fileID: 3173997897734958837, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: townUI
+      value: 
+      objectReference: {fileID: 1046922574}
     - target: {fileID: 3173997897734958837, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: ressources
       value: 
@@ -688,6 +769,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5452099810645680075, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452099810645680075, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PurchaseMiner, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5809408796104090066, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_Name
       value: Gold_income_text
@@ -744,7 +833,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4829856553563415744, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       insertIndex: 4
       addedObject: {fileID: 1342426261}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2757102018191011626, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1046922574}
   m_SourcePrefab: {fileID: 100100000, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
 --- !u!1 &1046922566 stripped
 GameObject:
@@ -756,6 +848,26 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4829856553563415744, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
   m_PrefabInstance: {fileID: 1046922565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046922574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046922566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfaf1789b20eb945b0b1f759d95a50c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButton: {fileID: 529267375}
+  goldIncomeText: {fileID: 974029699}
+  townNameText: {fileID: 1342426262}
+  townLevelText: {fileID: 967180500}
+  purchaseMinerButton: {fileID: 1767286669}
+  purchaseSoldierButton: {fileID: 782438393}
+  purchaseMinerText: {fileID: 44366508}
+  upgradeTownText: {fileID: 2119922008}
 --- !u!1 &1082986184
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,7 +881,6 @@ GameObject:
   - component: {fileID: 1082986188}
   - component: {fileID: 1082986187}
   - component: {fileID: 1082986186}
-  - component: {fileID: 1082986190}
   m_Layer: 0
   m_Name: TilemapManager
   m_TagString: Untagged
@@ -804,12 +915,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac777e56d099cb4dbb55ad4c99a19eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldMap: {fileID: 1341367779}
   darkFogMap: {fileID: 1526189688}
   softFogMap: {fileID: 1208422008}
-  darkFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
-  softFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
-  baseCell: {x: 0, y: 0, z: 0}
+  darkFogTile: {fileID: 11400000, guid: cf858875592cc6c4f83a8baaa45080b4, type: 2}
+  softFogTile: {fileID: 11400000, guid: cf858875592cc6c4f83a8baaa45080b4, type: 2}
   baseNormalizedPos: {x: 0.5, y: 0.5}
   revealRadius: 2
   useCircularReveal: 1
@@ -842,11 +951,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveGenerator: {fileID: 1082986189}
   ruinsPlacer: {fileID: 1082986187}
-  enemyCaverneGeneration: {fileID: 1082986190}
   fogOfWar: {fileID: 1082986186}
   tilemap: {fileID: 1341367779}
   backgroundTile: {fileID: 6012646154510742146, guid: d90338145b086944186668b8e064ef74, type: 3}
-  crystalTile: {fileID: 11400000, guid: 5a499a688d93e7a4a95eb1c12a8c7062, type: 2}
   length: 200
   width: 200
   crystalChance: 0.02
@@ -1013,7 +1120,7 @@ GameObject:
   - component: {fileID: 1208422008}
   - component: {fileID: 1208422007}
   m_Layer: 0
-  m_Name: Tilemap (2)
+  m_Name: Softfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1028,7 +1135,7 @@ Transform:
   m_GameObject: {fileID: 1208422005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,7 +1209,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1259,7 +1366,7 @@ GameObject:
   - component: {fileID: 1342426263}
   - component: {fileID: 1342426262}
   m_Layer: 5
-  m_Name: City_name_text
+  m_Name: Town_name_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1370,7 +1477,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -224.057, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1396,7 +1503,7 @@ GameObject:
   - component: {fileID: 1526189688}
   - component: {fileID: 1526189687}
   m_Layer: 0
-  m_Name: Tilemap (1)
+  m_Name: Darkfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,7 +1518,7 @@ Transform:
   m_GameObject: {fileID: 1526189685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1485,7 +1592,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1507,6 +1614,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1767286669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5452099810645680075, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1963692618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1739,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8a82639ef5bab459c145b2528d63e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2119922008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7069658348561609648, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+  m_PrefabInstance: {fileID: 1046922565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2138801322
@@ -1926,3 +2055,4 @@ SceneRoots:
   - {fileID: 1084080417}
   - {fileID: 7225267701233058984}
   - {fileID: 1029201597}
+  - {fileID: 124052169}

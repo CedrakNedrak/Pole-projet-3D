@@ -9,11 +9,38 @@ public class Mineur : CharaMovement
     [SerializeField] private int miningRange = 2;
 
     [SerializeField] private GameObject cursor;
+    [SerializeField] private GameObject tilemapManager;
+    
+    private FogOfWar fogOfWar;
 
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnDisable()
+    {
+        changeTween -= ChangeTween;
+    }
+
+    private void Start()
+    {
+        if (tilemapManager != null)
+            fogOfWar = tilemapManager.GetComponent<FogOfWar>();
+    }
+
+    private void ChangeTween()
+    {
+        if (tweenEnCours < path.Count - 1)
+        {
+            tweenEnCours += 1;
+            StartTween(path[tweenEnCours]);
+        }
+        else
+        {
+            tweenEnCours = 0;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Map"))
         {
@@ -24,23 +51,55 @@ public class Mineur : CharaMovement
     public void StartMining()
     {
         TakeEndPosition();
-        Vector2Int startIntPosition = new Vector2Int((int)transform.position.x, (int)transform.position.y);
-        Vector2Int endIntPosition = new Vector2Int((int)endPosition.x, (int)endPosition.y);
 
+        Vector2Int startIntPosition = new Vector2Int(
+            Mathf.RoundToInt(transform.position.x),
+            Mathf.RoundToInt(transform.position.y)
+        );
+
+        Vector2Int endIntPosition = new Vector2Int(
+            Mathf.RoundToInt(endPosition.x),
+            Mathf.RoundToInt(endPosition.y)
+        );
+            if (Pathfinding.pathfinding == null)
+            {
+                Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
+                return;
+            }
         path = Pathfinding.pathfinding.Launch(startIntPosition, endIntPosition);
+
+        if (path == null || path.Count == 0)
+            return;
+
+        tweenEnCours = 0;
 
         Rotate();
         StartTween(path[0]);
-        cursor.SetActive(false);
+
+        if (cursor != null)
+            cursor.SetActive(false);
     }
 
-    public IEnumerator WaitBeforeDestroying(GameObject collision)
+    private IEnumerator WaitBeforeDestroying(GameObject collision)
     {
         StopTween();
+
         yield return new WaitForSeconds(pauseWhenMinining);
         collision.SetActive(false);
         TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
-        if (path!=null && path.Count > tweenEnCours)
+
+        Vector3Int cell = new Vector3Int(
+            Mathf.RoundToInt(collision.transform.position.x),
+            Mathf.RoundToInt(collision.transform.position.y),
+            0
+        );
+
+        TileGenerator.tileGenerator.DigCell(cell);
+
+        if (fogOfWar != null)
+            fogOfWar.RefreshVisibility();
+
+        if (path != null && path.Count > tweenEnCours)
         {
             Rotate();
             StartTween(path[tweenEnCours]);
@@ -57,16 +116,24 @@ public class Mineur : CharaMovement
         {
             worldPosition = ray.GetPoint(distance);
         }
+
         worldPosition.z = 0;
         endPosition = worldPosition;
     }
 
     private void Rotate()
     {
-        Vector3 direction = path[tweenEnCours] - transform.position;
+        if (path == null || path.Count == 0)
+            return;
+
+        Vector3 direction = path[tweenEnCours] - Vector3Int.RoundToInt(transform.position);
+
+        if (direction == Vector3.zero)
+            return;
+
         float alpha = MathF.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
+
         transform.rotation = Quaternion.Euler(startPosition);
         transform.Rotate(0, 180, -alpha);
     }
 }
-
