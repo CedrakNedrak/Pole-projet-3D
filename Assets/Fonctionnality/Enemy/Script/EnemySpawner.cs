@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private int enemyCap = 5;
+    [SerializeField] private int enemyCap = 1;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float spawnInterval;
     private int enemyCount = 0;
@@ -15,7 +15,8 @@ public class EnemySpawner : MonoBehaviour
         {
             if (enemyCount < enemyCap)
             {
-                Vector3 position = new Vector3(0,0,0);
+                Vector3 position = transform.position;
+                position.y--;
 
                 Instantiate(enemy, position, enemy.transform.rotation);
                 enemyCount += 1;

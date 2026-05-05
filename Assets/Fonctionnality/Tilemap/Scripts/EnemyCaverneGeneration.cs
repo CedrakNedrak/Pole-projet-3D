@@ -2,6 +2,7 @@ using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class EnemyCaverneGeneration : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
    
     private Tilemap map;
     [SerializeField] private TileBase ruinTile;
+    [SerializeField] private GameObject ennemiSpawner;
     [SerializeField] private int numOfEnnemyBase = 3;
 
     public void PlaceEnemyBase()
@@ -61,7 +63,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
                 go.SetActive(false);
             }
 
-            map.SetTile(secondCell, ruinTile);
+            GameObject gO = Instantiate(ennemiSpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
             caveGen.UsedRoom.Add(enemyBase);
         }
     }

@@ -3,35 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mineur : MonoBehaviour
+public class Mineur : CharaMovement
 {
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
 
     [SerializeField] private GameObject cursor;
-    [SerializeField] private float speed = 0.1f;
 
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
-    private List<int> indexTween = new List<int>();
-    List<Vector3Int> path = new List<Vector3Int>();
-    Action changeTween;
-    private int tweenEnCours;
-    public void OnEnable()
-    {
-        tweenEnCours = 0;
-        changeTween += ChangeTween;
-    }
-
-    private void ChangeTween()
-    {
-        if (tweenEnCours < path.Count-1)
-        {
-            tweenEnCours += 1;
-            StartTween(path[tweenEnCours]);
-        }
-        else { tweenEnCours = 0; }
-    }
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -60,32 +40,11 @@ public class Mineur : MonoBehaviour
         yield return new WaitForSeconds(pauseWhenMinining);
         collision.SetActive(false);
         TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
-        if (path.Count > tweenEnCours)
+        if (path!=null && path.Count > tweenEnCours)
         {
             Rotate();
             StartTween(path[tweenEnCours]);
         }
-    }
-    
-    public void StopTween()
-    {
-        for (int i = 0; i < indexTween.Count; i++)
-        {
-            TweenManager.PausedTheTween(indexTween[i]);
-        }
-    }
-
-    public void StartTween(Vector3Int end)
-    {
-        Vector3 beginingPosition = transform.position;
-        float time = (end - beginingPosition).magnitude / speed;
-
-        TweenManager.Add(new Tween(time, t =>
-        {
-            transform.position = Vector3.Lerp(beginingPosition, end, t);
-        }, changeTween)); 
-
-        indexTween.Add(TweenManager.NumberOfTweens() - 1);
     }
 
     private void TakeEndPosition()
