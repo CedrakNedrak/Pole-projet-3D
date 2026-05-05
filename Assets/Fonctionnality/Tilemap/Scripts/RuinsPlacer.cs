@@ -1,26 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 
 public class RuinsPlacer : MonoBehaviour
 {
     [Header("Références")]
     [SerializeField] private CaverneGeneration caveGen;
-    private Tilemap map;
     [SerializeField] private TileBase ruinTile;
 
-    [Header("Probabilité par salle (hors base)")]
     [Range(0f, 1f)]
     [SerializeField] private float ruinRoomChance = 0.4f;
 
-   
-
     public void PlaceRuins()
     {
-        map = caveGen.Tilemap;
-        if (caveGen == null || map == null || ruinTile == null)
+        if (caveGen == null || ruinTile == null)
         {
             Debug.LogError("[RuinsPlacer] Références manquantes !");
+            return;
+        }
+
+        Tilemap map = caveGen.Tilemap;
+
+        if (map == null)
+        {
+            Debug.LogError("[RuinsPlacer] Tilemap introuvable !");
             return;
         }
 
@@ -29,10 +32,11 @@ public class RuinsPlacer : MonoBehaviour
 
         int placed = 0;
 
-        foreach (var center in centers)
+        foreach (Vector2Int center in centers)
         {
             if (Random.value > ruinRoomChance)
                 continue;
+
             if (caveGen.UsedRoom.Contains(center))
                 continue;
 
@@ -41,9 +45,10 @@ public class RuinsPlacer : MonoBehaviour
                 bounds.yMin + center.y,
                 0
             );
-            Debug.Log($"Place ruin at cell {cell} | current tile = {map.GetTile(cell)}");
-            caveGen.UsedRoom.Add(new Vector2Int( cell.x, cell.y ));
+
             map.SetTile(cell, ruinTile);
+
+            caveGen.UsedRoom.Add(center);
             placed++;
         }
 

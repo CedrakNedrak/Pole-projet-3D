@@ -4,31 +4,30 @@ using UnityEngine.Tilemaps;
 
 public class FogOfWar : MonoBehaviour
 {
-    [Header("Références")]
-    [SerializeField] private Tilemap worldMap;
     [SerializeField] private Tilemap darkFogMap;
     [SerializeField] private Tilemap softFogMap;
 
     [SerializeField] private TileBase darkFogTile;
     [SerializeField] private TileBase softFogTile;
 
-    [Header("Base")]
-    [SerializeField] private Vector3Int baseCell;
     [SerializeField] private Vector2 baseNormalizedPos = new Vector2(0.5f, 0.5f);
 
-    [Header("Réglages")]
     [SerializeField] private int revealRadius = 2;
     [SerializeField] private bool useCircularReveal = true;
 
     private BoundsInt bounds;
+    private Vector3Int baseCell;
+
     public void InitializeFog()
     {
-        worldMap.CompressBounds();
-        bounds = worldMap.cellBounds;
+        int width = TileGenerator.tileGenerator.Width;
+        int height = TileGenerator.tileGenerator.Length;
+
+        bounds = new BoundsInt(0, 0, 0, width, height, 1);
 
         baseCell = new Vector3Int(
-            Mathf.RoundToInt((bounds.size.x - 1) * baseNormalizedPos.x) + bounds.xMin,
-            Mathf.RoundToInt((bounds.size.y - 1) * baseNormalizedPos.y) + bounds.yMin,
+            Mathf.RoundToInt((width - 1) * baseNormalizedPos.x),
+            Mathf.RoundToInt((height - 1) * baseNormalizedPos.y),
             0
         );
 
@@ -38,7 +37,7 @@ public class FogOfWar : MonoBehaviour
         foreach (Vector3Int pos in bounds.allPositionsWithin)
         {
             darkFogMap.SetTile(pos, darkFogTile);
-            softFogMap.SetTile(pos, null);;
+            softFogMap.SetTile(pos, null);
         }
 
         RefreshVisibility();
@@ -46,12 +45,6 @@ public class FogOfWar : MonoBehaviour
 
     public void RefreshVisibility()
     {
-        if (worldMap == null || darkFogMap == null || softFogMap == null)
-            return;
-
-        worldMap.CompressBounds();
-        bounds = worldMap.cellBounds;
-
         HashSet<Vector3Int> visibleCells = GetReachableCellsFromBase();
         HashSet<Vector3Int> softVisibleCells = ExpandVisibleArea(visibleCells);
 
@@ -59,19 +52,16 @@ public class FogOfWar : MonoBehaviour
         {
             if (visibleCells.Contains(pos))
             {
-                // Visible total
                 darkFogMap.SetTile(pos, null);
                 softFogMap.SetTile(pos, null);
             }
             else if (softVisibleCells.Contains(pos))
             {
-                // Pénombre
                 darkFogMap.SetTile(pos, null);
                 softFogMap.SetTile(pos, softFogTile);
             }
             else
             {
-                // Noir total
                 darkFogMap.SetTile(pos, darkFogTile);
                 softFogMap.SetTile(pos, null);
             }
@@ -89,7 +79,7 @@ public class FogOfWar : MonoBehaviour
         queue.Enqueue(baseCell);
         visited.Add(baseCell);
 
-        Vector3Int[] directions = new Vector3Int[]
+        Vector3Int[] directions =
         {
             new Vector3Int(1, 0, 0),
             new Vector3Int(-1, 0, 0),
@@ -132,7 +122,7 @@ public class FogOfWar : MonoBehaviour
             {
                 for (int dy = -revealRadius; dy <= revealRadius; dy++)
                 {
-                    Vector3Int nearby = new Vector3Int(cell.x + dx, cell.y + dy, cell.z);
+                    Vector3Int nearby = new Vector3Int(cell.x + dx, cell.y + dy, 0);
 
                     if (!bounds.Contains(nearby))
                         continue;
@@ -155,11 +145,6 @@ public class FogOfWar : MonoBehaviour
 
     private bool IsWalkable(Vector3Int cell)
     {
-        return worldMap.GetTile(cell) == null;
-    }
-
-    public void SetBaseCell(Vector3Int newBaseCell)
-    {
-        baseCell = newBaseCell;
+        return TileGenerator.tileGenerator.IsWalkable(cell.x, cell.y);
     }
 }
