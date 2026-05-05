@@ -9,9 +9,11 @@ public class Mineur : MonoBehaviour
     [SerializeField] private int miningRange = 2;
 
     [SerializeField] private GameObject cursor;
-    [SerializeField] private FogOfWar fogOfWar;
+    [SerializeField] private GameObject tilemapManager;
 
     [SerializeField] private float speed = 0.1f;
+
+    private FogOfWar fogOfWar;
 
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
@@ -31,6 +33,12 @@ public class Mineur : MonoBehaviour
     private void OnDisable()
     {
         changeTween -= ChangeTween;
+    }
+
+    private void Start()
+    {
+        if (tilemapManager != null)
+            fogOfWar = tilemapManager.GetComponent<FogOfWar>();
     }
 
     private void ChangeTween()
@@ -56,6 +64,8 @@ public class Mineur : MonoBehaviour
 
     public void StartMining()
     {
+        Debug.Log("[Mineur] StartMining lancé");
+
         TakeEndPosition();
 
         Vector2Int startIntPosition = new Vector2Int(
@@ -67,7 +77,11 @@ public class Mineur : MonoBehaviour
             Mathf.RoundToInt(endPosition.x),
             Mathf.RoundToInt(endPosition.y)
         );
-
+            if (Pathfinding.pathfinding == null)
+            {
+                Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
+                return;
+            }
         path = Pathfinding.pathfinding.Launch(startIntPosition, endIntPosition);
 
         if (path == null || path.Count == 0)
@@ -99,12 +113,6 @@ public class Mineur : MonoBehaviour
         if (fogOfWar != null)
             fogOfWar.RefreshVisibility();
 
-        if (path.Count >= 1)
-        collision.SetActive(false);
-        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
-        if (path.Count > tweenEnCours)
-        collision.SetActive(false);
-        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
         if (path.Count > tweenEnCours)
         {
             Rotate();
