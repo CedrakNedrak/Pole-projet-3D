@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class CaverneGeneration : MonoBehaviour
 {
@@ -9,20 +8,20 @@ public class CaverneGeneration : MonoBehaviour
     public Tilemap Tilemap => tilemap;
 
     private BoundsInt bounds;
-    public int Width {get; private set; }
+
+    public int Width { get; private set; }
     public int Height { get; private set; }
-    
-    [Header("Salles (cavernes)")]
-    [SerializeField] int roomCount = 8;
-    [SerializeField] int roomRadiusMin = 5;
-    [SerializeField] int roomRadiusMax = 10;
 
-    [Header("Base / Taverne")]
-    [SerializeField] int baseRadius = 10;   // taille de la taverne de départ
-    [SerializeField] Vector2 baseNormalizedPos = new Vector2(0.5f, 0.5f); // pos de la taverne de départ
+    [Header("Salles")]
+    [SerializeField] private int roomCount = 8;
+    [SerializeField] private int roomRadiusMin = 5;
+    [SerializeField] private int roomRadiusMax = 10;
 
-    //pour éviter que les salles se chevauchent trop
-    [SerializeField] int roomPadding = 3;
+    [Header("Base")]
+    [SerializeField] private int baseRadius = 10;
+    [SerializeField] private Vector2 baseNormalizedPos = new Vector2(0.5f, 0.5f);
+
+    [SerializeField] private int roomPadding = 3;
 
     public struct Room
     {
@@ -39,36 +38,34 @@ public class CaverneGeneration : MonoBehaviour
         ReadTilemapBounds();
         GenerateRoomsOnly();
     }
-    // ------------- Lire les infos des salles (position, taille) -------------
 
     public List<Vector2Int> GetNonBaseRoomCenters()
     {
         List<Vector2Int> centers = new List<Vector2Int>();
 
-        for (int i = 1; i < rooms.Count; i++) // 0 = base
-        {
+        for (int i = 1; i < rooms.Count; i++)
             centers.Add(rooms[i].center);
-        }
 
         return centers;
     }
+
     public BoundsInt GetBounds()
     {
         return bounds;
     }
-    // ------------- Lire la zone (bounds) -------------
+
     private void ReadTilemapBounds()
     {
-        Width = 200;
-        Height = 200;
+        Width = TileGenerator.tileGenerator.Width;
+        Height = TileGenerator.tileGenerator.Length;
+        bounds = new BoundsInt(0, 0, 0, Width, Height, 1);
     }
 
-    // ------------- Générer UNIQUEMENT des salles (non connectées) -------------
     private void GenerateRoomsOnly()
     {
         rooms.Clear();
+        UsedRoom.Clear();
 
-        // A) Base/taverne garantie
         Vector2Int baseCenter = new Vector2Int(
             Mathf.RoundToInt((Width - 1) * baseNormalizedPos.x),
             Mathf.RoundToInt((Height - 1) * baseNormalizedPos.y)
@@ -77,8 +74,8 @@ public class CaverneGeneration : MonoBehaviour
         Room baseRoom = new Room { center = baseCenter, radius = baseRadius };
         CarveCircle(baseRoom.center, baseRoom.radius);
         rooms.Add(baseRoom);
+        UsedRoom.Add(baseCenter);
 
-        // B) Autres salles circulaires
         int tries = 0;
         int created = 0;
 
@@ -87,8 +84,6 @@ public class CaverneGeneration : MonoBehaviour
             tries++;
 
             int r = Random.Range(roomRadiusMin, roomRadiusMax + 1);
-
-            // éviter les bords pour que le cercle tienne dans la map
             int x = Random.Range(r + 2, Width - r - 2);
             int y = Random.Range(r + 2, Height - r - 2);
 
@@ -105,19 +100,17 @@ public class CaverneGeneration : MonoBehaviour
 
     private bool IsTooCloseToExistingRooms(Room candidate, int extraPadding)
     {
-        foreach (var r in rooms)
+        foreach (Room r in rooms)
         {
             float dist = Vector2Int.Distance(candidate.center, r.center);
-            if (dist < (candidate.radius + r.radius + extraPadding))
+
+            if (dist < candidate.radius + r.radius + extraPadding)
                 return true;
         }
+
         return false;
     }
 
-    private bool InBounds(int x, int y)
-        => x >= 0 && y >= 0 && x < Width && y < Height;
-
-    // Creuse une salle (cercle approx sur grille)
     private void CarveCircle(Vector2Int center, int radius)
     {
         int r2 = radius * radius;
@@ -126,25 +119,15 @@ public class CaverneGeneration : MonoBehaviour
         {
             for (int dy = -radius; dy <= radius; dy++)
             {
-                // Si on est EN DEHORS du cercle -> on saute
-                if (dx * dx + dy * dy > r2 - radius) continue;
+                if (dx * dx + dy * dy > r2 - radius)
+                    continue;
 
                 int gx = center.x + dx;
                 int gy = center.y + dy;
 
-
                 Vector3Int cell = new Vector3Int(bounds.xMin + gx, bounds.yMin + gy, 0);
-                if (cell.x < 200 && cell.x >= 0 && 0 <= cell.y && cell.y < 200)
-                {
-                    GameObject go = TileGenerator.tileGenerator.WorldMatrice[cell.x, cell.y];
-                    TileGenerator.tileGenerator.WorldIntMatrice[cell.x, cell.y] = 1;
-                    go.SetActive(false);
-                }
-
+                TileGenerator.tileGenerator.DigCell(cell);
             }
         }
     }
-
-    
-
 }

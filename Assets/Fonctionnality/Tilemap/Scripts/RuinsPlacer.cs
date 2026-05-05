@@ -10,7 +10,6 @@ public class RuinsPlacer : MonoBehaviour
     [SerializeField] private GameObject ruinGameObject;
     [SerializeField] private GameplayManager gameplayManager;
 
-    [Header("Probabilité par salle (hors base)")]
     [Range(0f, 1f)]
     [SerializeField] private float ruinRoomChance = 0.6f;
 
@@ -106,15 +105,24 @@ public class RuinsPlacer : MonoBehaviour
             return;
         }
 
+        Tilemap map = caveGen.Tilemap;
+
+        if (map == null)
+        {
+            Debug.LogError("[RuinsPlacer] Tilemap introuvable !");
+            return;
+        }
+
         List<Vector2Int> centers = caveGen.GetNonBaseRoomCenters();
         BoundsInt bounds = caveGen.GetBounds();
 
         int placed = 0;
 
-        foreach (var center in centers)
+        foreach (Vector2Int center in centers)
         {
             if (Random.value > ruinRoomChance)
                 continue;
+
             if (caveGen.UsedRoom.Contains(center))
                 continue;
 
@@ -127,6 +135,7 @@ public class RuinsPlacer : MonoBehaviour
             caveGen.UsedRoom.Add(new Vector2Int(cell.x, cell.y));
             string townName = townNames[Random.Range(0, townNames.Count)];
             gameplayManager.SpawnTown(cell.ToWorldScale(), Quaternion.identity, townName, 0, 40, 0, 200, 40, 1000);
+            caveGen.UsedRoom.Add(center);
             placed++;
         }
 

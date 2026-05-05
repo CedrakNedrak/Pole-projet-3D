@@ -896,12 +896,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac777e56d099cb4dbb55ad4c99a19eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldMap: {fileID: 1341367779}
   darkFogMap: {fileID: 1526189688}
   softFogMap: {fileID: 1208422008}
-  darkFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
-  softFogTile: {fileID: 11400000, guid: 4a85f5d01fe5e5246b6e0b7f3e52e39b, type: 2}
-  baseCell: {x: 0, y: 0, z: 0}
+  darkFogTile: {fileID: 11400000, guid: cf858875592cc6c4f83a8baaa45080b4, type: 2}
+  softFogTile: {fileID: 11400000, guid: cf858875592cc6c4f83a8baaa45080b4, type: 2}
   baseNormalizedPos: {x: 0.5, y: 0.5}
   revealRadius: 2
   useCircularReveal: 1
@@ -939,10 +937,8 @@ MonoBehaviour:
   fogOfWar: {fileID: 1082986186}
   tilemap: {fileID: 1341367779}
   backgroundTile: {fileID: 6012646154510742146, guid: d90338145b086944186668b8e064ef74, type: 3}
-  crystalTile: {fileID: 11400000, guid: 5a499a688d93e7a4a95eb1c12a8c7062, type: 2}
   length: 200
   width: 200
-  crystalChance: 0.02
 --- !u!114 &1082986189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +969,7 @@ GameObject:
   - component: {fileID: 1208422008}
   - component: {fileID: 1208422007}
   m_Layer: 0
-  m_Name: Tilemap (2)
+  m_Name: Softfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -988,7 +984,7 @@ Transform:
   m_GameObject: {fileID: 1208422005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1062,7 +1058,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1356,7 +1352,7 @@ GameObject:
   - component: {fileID: 1526189688}
   - component: {fileID: 1526189687}
   m_Layer: 0
-  m_Name: Tilemap (1)
+  m_Name: Darkfogmap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,7 +1367,7 @@ Transform:
   m_GameObject: {fileID: 1526189685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1445,7 +1441,7 @@ Tilemap:
   m_TileColorArray: []
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
   m_Size: {x: 0, y: 0, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
