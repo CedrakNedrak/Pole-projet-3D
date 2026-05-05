@@ -2,14 +2,10 @@ using UnityEngine;
 
 public class PurchaseSoldierButton : MonoBehaviour
 {
-    [SerializeField] private Ressources ressources;
-    [SerializeField] private GameObject soldier;
-    [SerializeField] private int soldierPrice = 20;
-    private Vector3 spawnPosition = new Vector3(0,0,0);
-
+    [SerializeField] private TownUI townUI;
     public void PurchaseSoldier()
     {
-        
+        townUI.townData.SpawnSoldier.Spawn();
     }
 
 }

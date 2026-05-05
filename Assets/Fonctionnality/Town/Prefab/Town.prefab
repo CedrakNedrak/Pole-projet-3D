@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4912923680938044496}
   - component: {fileID: 2553929081644536717}
   - component: {fileID: 101801839776644569}
+  - component: {fileID: -9215176206139041377}
   - component: {fileID: 5296391341535975259}
   - component: {fileID: 6588953046390208416}
   m_Layer: 0
@@ -158,6 +159,7 @@ MonoBehaviour:
   townLevelingSystem: {fileID: 5296391341535975259}
   townGenerateGold: {fileID: 4912923680938044496}
   spawnMiner: {fileID: 101801839776644569}
+  spawnSoldier: {fileID: -9215176206139041377}
   buildTown: {fileID: 6588953046390208416}
 --- !u!114 &101801839776644569
 MonoBehaviour:
@@ -174,6 +176,22 @@ MonoBehaviour:
   townData: {fileID: 2553929081644536717}
   minerPrefab: {fileID: 1642776669101629188, guid: 965f971520971be41899173fd795012e, type: 3}
   minerPrice: 40
+  spawnDistance: 2
+--- !u!114 &-9215176206139041377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140435764575868162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2462e62bc0182f248b449f6037c64590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  townData: {fileID: 2553929081644536717}
+  soldierPrefab: {fileID: 0}
+  soldierPrice: 50
   spawnDistance: 2
 --- !u!114 &5296391341535975259
 MonoBehaviour:

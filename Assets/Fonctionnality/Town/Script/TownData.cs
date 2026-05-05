@@ -14,6 +14,8 @@ public class TownData : MonoBehaviour
     public TownGenerateGold TownGenerateGold => townGenerateGold;
     [SerializeField] private SpawnMiner spawnMiner;
     public SpawnMiner SpawnMiner => spawnMiner;
+    [SerializeField] private SpawnSoldier spawnSoldier;
+    public SpawnSoldier SpawnSoldier => spawnSoldier;
     public Ressources ressources { get; private set; }
     [SerializeField] private BuildTown buildTown;
     public BuildTown BuildTown => buildTown;
