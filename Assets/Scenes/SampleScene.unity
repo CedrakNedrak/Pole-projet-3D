@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 124052169}
   - component: {fileID: 124052168}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameplayManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -919,6 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveGen: {fileID: 1082986189}
   ruinGameObject: {fileID: 9140435764575868162, guid: 72eb1c43020b35b4ea09a115de219138, type: 3}
+  gameplayManager: {fileID: 124052168}
   ruinRoomChance: 0.4
 --- !u!114 &1082986188
 MonoBehaviour:
