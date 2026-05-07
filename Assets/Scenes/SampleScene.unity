@@ -1283,6 +1283,10 @@ PrefabInstance:
       value: Grid
       objectReference: {fileID: 0}
     - target: {fileID: 1820918356910262729, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: ruinRoomChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820918356910262729, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
       propertyPath: gameplayManager
       value: 
       objectReference: {fileID: 124052168}
@@ -1330,6 +1334,10 @@ PrefabInstance:
       propertyPath: enemyCaverneGeneration
       value: 
       objectReference: {fileID: 237058727}
+    - target: {fileID: 8592392685554339526, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: gameplayManager
+      value: 
+      objectReference: {fileID: 124052168}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
