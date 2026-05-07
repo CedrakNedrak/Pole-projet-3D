@@ -22,6 +22,7 @@ public class CaverneGeneration : MonoBehaviour
     [SerializeField] private Vector2 baseNormalizedPos = new Vector2(0.5f, 0.5f);
 
     [SerializeField] private int roomPadding = 3;
+    [SerializeField] private GameplayManager gameplayManager;
 
     public struct Room
     {
@@ -75,6 +76,9 @@ public class CaverneGeneration : MonoBehaviour
         CarveCircle(baseRoom.center, baseRoom.radius);
         rooms.Add(baseRoom);
         UsedRoom.Add(baseCenter);
+        Vector3 spawnPos = new Vector3(baseCenter.x, baseCenter.y, 0f);
+        gameplayManager.SpawnTown(spawnPos, Quaternion.identity, "Cosy Cave", 200, 70, 1, 0, 40, 1000);
+        Camera.main.transform.position = new Vector3(spawnPos.x, spawnPos.y, -10f);
 
         int tries = 0;
         int created = 0;
