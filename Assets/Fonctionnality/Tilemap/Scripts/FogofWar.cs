@@ -18,6 +18,17 @@ public class FogOfWar : MonoBehaviour
     private BoundsInt bounds;
     private Vector3Int baseCell;
 
+    private HashSet<Vector3Int> visibleCells = new HashSet<Vector3Int>();
+    private HashSet<Vector3Int> softVisibleCells = new HashSet<Vector3Int>();
+
+    private Vector3Int[] directions =
+    {
+        new Vector3Int(1, 0, 0),
+        new Vector3Int(-1, 0, 0),
+        new Vector3Int(0, 1, 0),
+        new Vector3Int(0, -1, 0)
+    };
+
     public void InitializeFog()
     {
         int width = TileGenerator.tileGenerator.Width;
@@ -31,6 +42,9 @@ public class FogOfWar : MonoBehaviour
             0
         );
 
+        visibleCells.Clear();
+        softVisibleCells.Clear();
+
         darkFogMap.ClearAllTiles();
         softFogMap.ClearAllTiles();
 
@@ -40,52 +54,47 @@ public class FogOfWar : MonoBehaviour
             softFogMap.SetTile(pos, null);
         }
 
-        RefreshVisibility();
+        RefreshVisibility(baseCell);
     }
 
-    public void RefreshVisibility()
+    public void RefreshVisibility(Vector3Int dugCell)
     {
-        HashSet<Vector3Int> visibleCells = GetReachableCellsFromBase();
-        HashSet<Vector3Int> softVisibleCells = ExpandVisibleArea(visibleCells);
+        if (!bounds.Contains(dugCell))
+            return;
 
-        foreach (Vector3Int pos in bounds.allPositionsWithin)
+        if (!IsWalkable(dugCell))
+            return;
+
+        bool connectedToVisible = visibleCells.Contains(dugCell);
+
+        // IMPORTANT : au début, la base doit pouvoir lancer la découverte
+        if (visibleCells.Count == 0 && dugCell == baseCell)
+            connectedToVisible = true;
+
+        if (!connectedToVisible)
         {
-            if (visibleCells.Contains(pos))
+            foreach (Vector3Int dir in directions)
             {
-                darkFogMap.SetTile(pos, null);
-                softFogMap.SetTile(pos, null);
-            }
-            else if (softVisibleCells.Contains(pos))
-            {
-                darkFogMap.SetTile(pos, null);
-                softFogMap.SetTile(pos, softFogTile);
-            }
-            else
-            {
-                darkFogMap.SetTile(pos, darkFogTile);
-                softFogMap.SetTile(pos, null);
+                Vector3Int neighbor = dugCell + dir;
+
+                if (visibleCells.Contains(neighbor))
+                {
+                    connectedToVisible = true;
+                    break;
+                }
             }
         }
-    }
 
-    private HashSet<Vector3Int> GetReachableCellsFromBase()
-    {
-        HashSet<Vector3Int> visited = new HashSet<Vector3Int>();
+        if (!connectedToVisible)
+            return;
+
         Queue<Vector3Int> queue = new Queue<Vector3Int>();
 
-        if (!IsWalkable(baseCell))
-            return visited;
+        visibleCells.Add(dugCell);
+        queue.Enqueue(dugCell);
 
-        queue.Enqueue(baseCell);
-        visited.Add(baseCell);
-
-        Vector3Int[] directions =
-        {
-            new Vector3Int(1, 0, 0),
-            new Vector3Int(-1, 0, 0),
-            new Vector3Int(0, 1, 0),
-            new Vector3Int(0, -1, 0)
-        };
+        SetVisible(dugCell);
+        UpdateSoftFogAround(dugCell);
 
         while (queue.Count > 0)
         {
@@ -98,49 +107,55 @@ public class FogOfWar : MonoBehaviour
                 if (!bounds.Contains(next))
                     continue;
 
-                if (visited.Contains(next))
+                if (visibleCells.Contains(next))
                     continue;
 
                 if (!IsWalkable(next))
                     continue;
 
-                visited.Add(next);
+                visibleCells.Add(next);
                 queue.Enqueue(next);
+
+                SetVisible(next);
+                UpdateSoftFogAround(next);
             }
         }
-
-        return visited;
     }
 
-    private HashSet<Vector3Int> ExpandVisibleArea(HashSet<Vector3Int> sourceCells)
+    private void SetVisible(Vector3Int cell)
     {
-        HashSet<Vector3Int> expanded = new HashSet<Vector3Int>();
+        darkFogMap.SetTile(cell, null);
+        softFogMap.SetTile(cell, null);
 
-        foreach (Vector3Int cell in sourceCells)
+        softVisibleCells.Remove(cell);
+    }
+
+    private void UpdateSoftFogAround(Vector3Int center)
+    {
+        for (int dx = -revealRadius; dx <= revealRadius; dx++)
         {
-            for (int dx = -revealRadius; dx <= revealRadius; dx++)
+            for (int dy = -revealRadius; dy <= revealRadius; dy++)
             {
-                for (int dy = -revealRadius; dy <= revealRadius; dy++)
+                Vector3Int nearby = new Vector3Int(center.x + dx, center.y + dy, 0);
+
+                if (!bounds.Contains(nearby))
+                    continue;
+
+                if (visibleCells.Contains(nearby))
+                    continue;
+
+                if (useCircularReveal && dx * dx + dy * dy > revealRadius * revealRadius)
+                    continue;
+
+                if (!softVisibleCells.Contains(nearby))
                 {
-                    Vector3Int nearby = new Vector3Int(cell.x + dx, cell.y + dy, 0);
+                    softVisibleCells.Add(nearby);
 
-                    if (!bounds.Contains(nearby))
-                        continue;
-
-                    if (useCircularReveal)
-                    {
-                        if (dx * dx + dy * dy <= revealRadius * revealRadius)
-                            expanded.Add(nearby);
-                    }
-                    else
-                    {
-                        expanded.Add(nearby);
-                    }
+                    darkFogMap.SetTile(nearby, null);
+                    softFogMap.SetTile(nearby, softFogTile);
                 }
             }
         }
-
-        return expanded;
     }
 
     private bool IsWalkable(Vector3Int cell)

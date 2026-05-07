@@ -109,6 +109,6 @@ public class TileGenerator : MonoBehaviour
         worldIntMatrice[x, y] = 1;
 
         if (fogInitialized && fogOfWar != null)
-            fogOfWar.RefreshVisibility();
+            fogOfWar.RefreshVisibility(cell);
     }
 }

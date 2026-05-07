@@ -85,8 +85,6 @@ public class Mineur : CharaMovement
         StopTween();
 
         yield return new WaitForSeconds(pauseWhenMinining);
-        collision.SetActive(false);
-        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
 
         Vector3Int cell = new Vector3Int(
             Mathf.RoundToInt(collision.transform.position.x),
@@ -96,8 +94,6 @@ public class Mineur : CharaMovement
 
         TileGenerator.tileGenerator.DigCell(cell);
 
-        if (fogOfWar != null)
-            fogOfWar.RefreshVisibility();
 
         if (path != null && path.Count > tweenEnCours)
         {
