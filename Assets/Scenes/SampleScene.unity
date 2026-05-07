@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caveGen: {fileID: 237058726}
-  ruinTile: {fileID: 11400000, guid: f091b1dd2a79ffe4d9de1f53388bb24d, type: 2}
   ennemiSpawner: {fileID: 651551136489641977, guid: 473e6ab6e57fb1f49b1e1f750c90f705, type: 3}
   numOfEnnemyBase: 3
 --- !u!114 &330585548 stripped
@@ -434,6 +433,66 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1001 &434623559
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30.010868
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.865261
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -111.54968
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.16042991
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.06645224
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.3768696
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.90984374
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_Name
+      value: tour_ruines_v1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1289903621}
+  m_SourcePrefab: {fileID: 100100000, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
 --- !u!114 &529267375 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
@@ -938,6 +997,32 @@ MonoBehaviour:
   purchaseSoldierButton: {fileID: 782438393}
   purchaseMinerText: {fileID: 44366508}
   upgradeTownText: {fileID: 2119922008}
+--- !u!1 &1289903620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+  m_PrefabInstance: {fileID: 434623559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1289903621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289903620}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.021061806, y: 0.021905359, z: 0.029680682}
+  m_Center: {x: 0.00042176276, y: 0.0000000037378607, z: 0.01484034}
 --- !u!1 &1342426260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1368,10 @@ PrefabInstance:
       value: Grid
       objectReference: {fileID: 0}
     - target: {fileID: 1820918356910262729, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: ruinRoomChance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820918356910262729, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
       propertyPath: gameplayManager
       value: 
       objectReference: {fileID: 124052168}
@@ -1330,6 +1419,10 @@ PrefabInstance:
       propertyPath: enemyCaverneGeneration
       value: 
       objectReference: {fileID: 237058727}
+    - target: {fileID: 8713336473825354254, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1536,3 +1629,4 @@ SceneRoots:
   - {fileID: 406229969}
   - {fileID: 7225267701233058984}
   - {fileID: 124052169}
+  - {fileID: 434623559}
