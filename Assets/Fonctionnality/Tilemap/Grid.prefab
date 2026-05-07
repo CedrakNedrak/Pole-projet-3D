@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 8512939995802293553}
   - component: {fileID: 1820918356910262729}
   - component: {fileID: 4801743276736693801}
+  - component: {fileID: 7467987331260434160}
+  - component: {fileID: 9078692473075479928}
   m_Layer: 0
   m_Name: TilemapManager
   m_TagString: Untagged
@@ -115,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveGenerator: {fileID: 8592392685554339526}
   ruinsPlacer: {fileID: 1820918356910262729}
-  enemyCaverneGeneration: {fileID: 0}
+  enemyCaverneGeneration: {fileID: 7467987331260434160}
   fogOfWar: {fileID: 4801743276736693801}
   tilemap: {fileID: 2438874269966619428}
   backgroundTile: {fileID: 6012646154510742146, guid: d90338145b086944186668b8e064ef74, type: 3}
@@ -156,6 +158,34 @@ MonoBehaviour:
   baseNormalizedPos: {x: 0.5, y: 0.5}
   revealRadius: 2
   useCircularReveal: 1
+--- !u!114 &7467987331260434160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672730579215447560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28af3b600334c264f9ca88894ca76884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caveGen: {fileID: 8592392685554339526}
+  ruinTile: {fileID: 11400000, guid: 5a499a688d93e7a4a95eb1c12a8c7062, type: 2}
+  ennemiSpawner: {fileID: 651551136489641977, guid: 473e6ab6e57fb1f49b1e1f750c90f705, type: 3}
+  numOfEnnemyBase: 3
+--- !u!114 &9078692473075479928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672730579215447560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c720b4e812b4f8d4f8a633d187233bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4255073239930567140
 GameObject:
   m_ObjectHideFlags: 0
