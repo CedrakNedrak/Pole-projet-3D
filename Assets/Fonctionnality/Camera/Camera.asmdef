@@ -1,9 +1,8 @@
 {
-    "name": "Tilemap",
+    "name": "Camera",
     "rootNamespace": "",
     "references": [
-        "GUID:bdfb4dc9509a2f84396ef3ba88677591",
-        "GUID:21d82abb75d13c745b2150ae262cab32"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
