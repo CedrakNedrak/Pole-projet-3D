@@ -118,8 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
   upgradePrice: 10
-  ruinGameObject: {fileID: 1813907173336600274}
-  townLevelOneGameObject: {fileID: 298346444893514405}
+  townsLevelSprite:
+  - {fileID: 1813907173336600274}
+  - {fileID: 298346444893514405}
   townLevel: 1
 --- !u!114 &6588953046390208416
 MonoBehaviour:
