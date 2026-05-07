@@ -3,32 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mineur : MonoBehaviour
+public class Mineur : CharaMovement
 {
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
 
     [SerializeField] private GameObject cursor;
     [SerializeField] private GameObject tilemapManager;
-
-    [SerializeField] private float speed = 0.1f;
-
+    
     private FogOfWar fogOfWar;
 
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
-
-    private List<int> indexTween = new List<int>();
-    private List<Vector3Int> path = new List<Vector3Int>();
-
-    private Action changeTween;
-    private int tweenEnCours;
-
-    private void OnEnable()
-    {
-        tweenEnCours = 0;
-        changeTween += ChangeTween;
-    }
 
     private void OnDisable()
     {
@@ -64,8 +50,6 @@ public class Mineur : MonoBehaviour
 
     public void StartMining()
     {
-        Debug.Log("[Mineur] StartMining lancé");
-
         TakeEndPosition();
 
         Vector2Int startIntPosition = new Vector2Int(
@@ -101,6 +85,8 @@ public class Mineur : MonoBehaviour
         StopTween();
 
         yield return new WaitForSeconds(pauseWhenMinining);
+        collision.SetActive(false);
+        TileGenerator.tileGenerator.WorldIntMatrice[(int)collision.transform.position.x, (int)collision.transform.position.y] = 1;
 
         Vector3Int cell = new Vector3Int(
             Mathf.RoundToInt(collision.transform.position.x),
@@ -113,32 +99,11 @@ public class Mineur : MonoBehaviour
         if (fogOfWar != null)
             fogOfWar.RefreshVisibility();
 
-        if (path.Count > tweenEnCours)
+        if (path != null && path.Count > tweenEnCours)
         {
             Rotate();
             StartTween(path[tweenEnCours]);
         }
-    }
-
-    private void StopTween()
-    {
-        for (int i = 0; i < indexTween.Count; i++)
-        {
-            TweenManager.PausedTheTween(indexTween[i]);
-        }
-    }
-
-    private void StartTween(Vector3Int end)
-    {
-        Vector3 beginingPosition = transform.position;
-        float time = (end - Vector3Int.RoundToInt(beginingPosition)).magnitude / speed;
-
-        TweenManager.Add(new Tween(time, t =>
-        {
-            transform.position = Vector3.Lerp(beginingPosition, end, t);
-        }, changeTween));
-
-        indexTween.Add(TweenManager.NumberOfTweens() - 1);
     }
 
     private void TakeEndPosition()

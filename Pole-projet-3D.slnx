@@ -3,6 +3,8 @@
   <Project Path="Tilemap.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Enemy.csproj" />
   <Project Path="Motion.csproj" />
+  <Project Path="CharaMovement.csproj" />
   <Project Path="Clickable.csproj" />
 </Solution>
