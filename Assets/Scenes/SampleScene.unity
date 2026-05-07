@@ -220,8 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caveGen: {fileID: 237058726}
-  ruinTile: {fileID: 11400000, guid: f091b1dd2a79ffe4d9de1f53388bb24d, type: 2}
-  ennemiSpawner: {fileID: 651551136489641977, guid: 473e6ab6e57fb1f49b1e1f750c90f705, type: 3}
+  enemySpawner: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
   numOfEnnemyBase: 3
 --- !u!114 &330585548 stripped
 MonoBehaviour:
@@ -1334,6 +1333,10 @@ PrefabInstance:
       propertyPath: enemyCaverneGeneration
       value: 
       objectReference: {fileID: 237058727}
+    - target: {fileID: 8713336473825354254, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8592392685554339526, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
       propertyPath: gameplayManager
       value: 

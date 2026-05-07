@@ -10,8 +10,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
     [SerializeField] private CaverneGeneration caveGen;
    
     private Tilemap map;
-    [SerializeField] private TileBase ruinTile;
-    [SerializeField] private GameObject ennemiSpawner;
+    [SerializeField] private GameObject enemySpawner;
     [SerializeField] private int numOfEnnemyBase = 3;
 
     public void PlaceEnemyBase()
@@ -29,7 +28,6 @@ public class EnemyCaverneGeneration : MonoBehaviour
             0
         );
 
-        map.SetTile(mainCell, ruinTile);
         caveGen.UsedRoom.Add(centers[valeur]);
 
         for (int i = 0; i < numOfEnnemyBase; i++)
@@ -63,7 +61,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
                 go.SetActive(false);
             }
 
-            GameObject gO = Instantiate(ennemiSpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
+            GameObject gO = Instantiate(enemySpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
             caveGen.UsedRoom.Add(enemyBase);
         }
     }
