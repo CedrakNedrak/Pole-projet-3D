@@ -97,14 +97,6 @@ public class RuinsPlacer : MonoBehaviour
             return;
         }
 
-        map = caveGen.Tilemap;
-
-        if (map == null || ruinGameObject == null)
-        {
-            Debug.LogError("Missing references!");
-            return;
-        }
-
         Tilemap map = caveGen.Tilemap;
 
         if (map == null)
