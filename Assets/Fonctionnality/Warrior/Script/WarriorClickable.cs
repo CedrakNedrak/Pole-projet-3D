@@ -1,18 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MineurClickable : Clickable
+public class WarriorClickable : Clickable
 {
     [SerializeField] private GameObject cursor;
-    [SerializeField] private Mineur mineur;
+    [SerializeField] private WarriorMovement warrior;
 
     private bool firstClick;
 
-    public override void OnClick() {
+    public override void OnClick()
+    {
         cursor.SetActive(true);
         firstClick = true;
+        Debug.Log("aaaa");
     }
 
     public void Update()
@@ -21,11 +20,10 @@ public class MineurClickable : Clickable
         {
             if (Input.GetMouseButtonDown(1))
             {
-
-                mineur.StartMining();
+                warrior.Move();
                 firstClick = false;
+                cursor.SetActive(false);
             }
         }
     }
- 
 }
