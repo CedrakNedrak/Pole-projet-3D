@@ -1,36 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Mineur : CharaMovement
+public class WarriorMovement : CharaMovement
 {
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
 
-    [SerializeField] private GameObject cursor;
-    [SerializeField] private GameObject tilemapManager;
-    
     private FogOfWar fogOfWar;
 
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
 
-    private void Start()
-    {
-        if (tilemapManager != null)
-            fogOfWar = tilemapManager.GetComponent<FogOfWar>();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Map"))
-        {
-            StartCoroutine(WaitBeforeDestroying(collision.gameObject));
-        }
-    }
-
-    public void StartMining()
+    public void Move()
     {
         TakeEndPosition();
 
@@ -43,13 +24,18 @@ public class Mineur : CharaMovement
             Mathf.RoundToInt(endPosition.x),
             Mathf.RoundToInt(endPosition.y)
         );
-            if (Pathfinding.pathfinding == null)
-            {
-                Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
-                return;
-            }
+        if (Pathfinding.pathfinding == null)
+        {
+            Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
+            return;
+        }
+        ChangeWorldIntMatrice();
+
         path = Pathfinding.pathfinding.Launch(startIntPosition, endIntPosition);
 
+        Debug.Log(TileGenerator.tileGenerator.WorldIntMatrice[endIntPosition.x, endIntPosition.y]);
+            
+        Pathfinding.pathfinding.Grid = TileGenerator.tileGenerator.WorldIntMatrice;
         if (path == null || path.Count == 0)
             return;
 
@@ -57,31 +43,6 @@ public class Mineur : CharaMovement
 
         Rotate();
         StartTween(path[0]);
-
-        if (cursor != null)
-            cursor.SetActive(false);
-    }
-
-    private IEnumerator WaitBeforeDestroying(GameObject collision)
-    {
-        StopTween();
-
-        yield return new WaitForSeconds(pauseWhenMinining);
-
-        Vector3Int cell = new Vector3Int(
-            Mathf.RoundToInt(collision.transform.position.x),
-            Mathf.RoundToInt(collision.transform.position.y),
-            0
-        );
-
-        TileGenerator.tileGenerator.DigCell(cell);
-
-
-        if (path != null && path.Count > tweenEnCours)
-        {
-            Rotate();
-            StartTween(path[tweenEnCours]);
-        }
     }
 
     private void TakeEndPosition()
@@ -113,5 +74,22 @@ public class Mineur : CharaMovement
 
         transform.rotation = Quaternion.Euler(startPosition);
         transform.Rotate(0, 180, -alpha);
+    }
+
+    private void ChangeWorldIntMatrice()
+    {
+        int[,] warriorIntMatrice = (int[,])TileGenerator.tileGenerator.WorldIntMatrice.Clone();
+        for (int i = 0; i < TileGenerator.tileGenerator.Width; i++)
+        {
+            for (int j = 0; j < TileGenerator.tileGenerator.Length; j++)
+            {
+                if (warriorIntMatrice[i,j] == 2)
+                {
+                    warriorIntMatrice[i, j] = -1;
+                }
+            }
+        }
+
+        Pathfinding.pathfinding.Grid = warriorIntMatrice;
     }
 }

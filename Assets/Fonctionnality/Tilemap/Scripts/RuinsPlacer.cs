@@ -125,7 +125,7 @@ public class RuinsPlacer : MonoBehaviour
             Debug.Log($"Place ruin at cell {cell} | current tile = {map.GetTile(cell)}");
             caveGen.UsedRoom.Add(new Vector2Int(cell.x, cell.y));
             string townName = townNames[Random.Range(0, townNames.Count)];
-            gameplayManager.SpawnTown(cell.ToWorldScale(), Quaternion.Euler(-45,0,0), townName, 0, 40, 0, 200, 40, 1000);
+            gameplayManager.SpawnTown(cell.ToWorldScale(), Quaternion.Euler(-90,0,0), townName, 0, 40, 0, 200, 40, 1000);
             caveGen.UsedRoom.Add(center);
             placed++;
         }

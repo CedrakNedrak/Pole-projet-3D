@@ -7,6 +7,5 @@ public class PurchaseSoldierButton : MonoBehaviour
     {
         townUI.townData.SpawnSoldier.Spawn();
     }
-
 }
 
