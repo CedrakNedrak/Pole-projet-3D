@@ -5,6 +5,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int enemyCap = 1;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float spawnInterval;
+
+    [SerializeField] private DiscoveryManager discoveryManager;
+    
     private int enemyCount = 0;
     private float timer;
     void Update()
@@ -18,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 position = transform.position;
                 position.y--;
 
-                Instantiate(enemy, position, enemy.transform.rotation);
+                discoveryManager.Register(position, enemy, enemy.transform.rotation);
                 enemyCount += 1;
             }
             timer = 0f;

@@ -4,6 +4,8 @@ using UnityEngine.Tilemaps;
 
 public class FogOfWar : MonoBehaviour
 {
+    [SerializeField] private DiscoveryManager discoveryManager;
+
     [SerializeField] private Tilemap darkFogMap;
     [SerializeField] private Tilemap softFogMap;
 
@@ -128,6 +130,9 @@ public class FogOfWar : MonoBehaviour
         softFogMap.SetTile(cell, null);
 
         softVisibleCells.Remove(cell);
+
+        if (discoveryManager != null)
+            discoveryManager.RevealAt(cell);
     }
 
     private void UpdateSoftFogAround(Vector3Int center)
