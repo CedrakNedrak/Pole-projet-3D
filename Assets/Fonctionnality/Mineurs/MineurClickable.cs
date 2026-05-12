@@ -10,7 +10,6 @@ public class MineurClickable : Clickable
 
     private bool firstClick;
 
-    public event Action StartMining;
     public override void OnClick() {
         cursor.SetActive(true);
         firstClick = true;

@@ -5,7 +5,7 @@ public class Pathfinding :MonoBehaviour
 {
     public static Pathfinding pathfinding;
 
-    public int[,] grid;
+    public int[,] Grid { set; get; }
        
     int rows = 200;
     int cols = 200;
@@ -32,12 +32,19 @@ public class Pathfinding :MonoBehaviour
     }
     public void Start()
     {
-        grid = TileGenerator.tileGenerator.WorldIntMatrice;
+        Grid = TileGenerator.tileGenerator.WorldIntMatrice;
     }
+
     public List<Vector3Int> Launch(Vector2Int startPosition, Vector2Int endPosition)
     {
         var path = FindPath(startPosition, endPosition);
         List<Vector3Int> liste = new();
+        if (path == null)
+        {
+            Debug.Log("Aucun chemin possible");
+            return liste;
+        }
+
         foreach (var node in path)
            liste.Add(new Vector3Int(node.x, node.y, 0));
         
@@ -82,7 +89,7 @@ public class Pathfinding :MonoBehaviour
                     if (closedList.Contains(neighbor))
                         continue;
 
-                    int newCost = current.gCost + grid[neighbor.x, neighbor.y];
+                    int newCost = current.gCost + Grid[neighbor.x, neighbor.y];
                     int turnPenalty = 0;
 
                     if (current.parent != null)
@@ -97,7 +104,7 @@ public class Pathfinding :MonoBehaviour
                             turnPenalty = 1; // pénalité de virage
                     }
 
-                    newCost = current.gCost + grid[neighbor.x, neighbor.y] + 10 - turnPenalty;
+                    newCost = current.gCost + Grid[neighbor.x, neighbor.y] + 10 - turnPenalty;
                 if (newCost < neighbor.gCost || !openList.Contains(neighbor))
                     {
                         neighbor.gCost = newCost;
@@ -143,7 +150,8 @@ public class Pathfinding :MonoBehaviour
                 int ny = node.y + dy[i];
 
                 if (nx >= 0 && ny >= 0 && nx < rows && ny < cols)
-                    neighbors.Add(nodes[nx, ny]);
+                    if (Grid[nx, ny] >= 0)
+                        neighbors.Add(nodes[nx, ny]);
             }
 
             return neighbors;

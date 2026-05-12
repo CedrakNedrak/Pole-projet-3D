@@ -16,28 +16,10 @@ public class Mineur : CharaMovement
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
 
-    private void OnDisable()
-    {
-        changeTween -= ChangeTween;
-    }
-
     private void Start()
     {
         if (tilemapManager != null)
             fogOfWar = tilemapManager.GetComponent<FogOfWar>();
-    }
-
-    private void ChangeTween()
-    {
-        if (tweenEnCours < path.Count - 1)
-        {
-            tweenEnCours += 1;
-            StartTween(path[tweenEnCours]);
-        }
-        else
-        {
-            tweenEnCours = 0;
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
