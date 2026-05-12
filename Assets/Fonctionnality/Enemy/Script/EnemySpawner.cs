@@ -21,9 +21,21 @@ public class EnemySpawner : MonoBehaviour
                 Vector3 position = transform.position;
                 position.y--;
 
-                discoveryManager.Register(position, enemy, enemy.transform.rotation);
+                Vector3Int cell = new Vector3Int(
+                    Mathf.RoundToInt(position.x),
+                    Mathf.RoundToInt(position.y),
+                    0
+                );
+
+                discoveryManager.Register(
+                    cell,
+                    enemy,
+                    enemy.transform.rotation
+                );
+
                 enemyCount += 1;
             }
+
             timer = 0f;
         }
     }
