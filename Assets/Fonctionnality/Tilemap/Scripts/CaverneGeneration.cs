@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.PlayerSettings;
 
 public class CaverneGeneration : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CaverneGeneration : MonoBehaviour
     [SerializeField] private int roomPadding = 3;
     [SerializeField] private GameplayManager gameplayManager;
 
+    public Vector2 MainTownPosition { private set; get; }
     public struct Room
     {
         public Vector2Int center;
@@ -33,11 +35,11 @@ public class CaverneGeneration : MonoBehaviour
     private List<Room> rooms = new List<Room>();
     public List<Vector2Int> UsedRoom { get; set; } = new();
 
-    public void GenerateCaves(Tilemap map)
+    public Vector2 GenerateCaves(Tilemap map)
     {
         tilemap = map;
         ReadTilemapBounds();
-        GenerateRoomsOnly();
+        return GenerateRoomsOnly();
     }
 
     public List<Vector2Int> GetNonBaseRoomCenters()
@@ -62,7 +64,7 @@ public class CaverneGeneration : MonoBehaviour
         bounds = new BoundsInt(0, 0, 0, Width, Height, 1);
     }
 
-    private void GenerateRoomsOnly()
+    private Vector2 GenerateRoomsOnly()
     {
         rooms.Clear();
         UsedRoom.Clear();
@@ -77,6 +79,11 @@ public class CaverneGeneration : MonoBehaviour
         rooms.Add(baseRoom);
         UsedRoom.Add(baseCenter);
         Vector3 spawnPos = new Vector3(baseCenter.x, baseCenter.y, 0f);
+
+        int z = (int)(Mathf.Sin(-40 * Mathf.PI / 180) * (baseRoom.center.y-25) - 10);
+        int y2 = (int)(Mathf.Cos(-40 * Mathf.PI / 180) * (baseRoom.center.y-25));
+        Camera.main.transform.position = new Vector3(baseRoom.center.x, y2, z);
+
         gameplayManager.SpawnTown(spawnPos, Quaternion.Euler(-90,0,0), "Cosy Cave", 200, 70, 1, 0, 40, 1000);
         int tries = 0;
         int created = 0;
@@ -98,8 +105,7 @@ public class CaverneGeneration : MonoBehaviour
             rooms.Add(newRoom);
             created++;
         }
-
-        Camera.main.transform.position = new Vector3(spawnPos.x, spawnPos.y, -10f);
+        return baseRoom.center;
     }
 
     private bool IsTooCloseToExistingRooms(Room candidate, int extraPadding)

@@ -8,7 +8,6 @@ public class Mineur : CharaMovement
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
 
-    [SerializeField] private GameObject cursor;
     [SerializeField] private GameObject tilemapManager;
     
     private FogOfWar fogOfWar;
@@ -57,9 +56,6 @@ public class Mineur : CharaMovement
 
         Rotate();
         StartTween(path[0]);
-
-        if (cursor != null)
-            cursor.SetActive(false);
     }
 
     private IEnumerator WaitBeforeDestroying(GameObject collision)

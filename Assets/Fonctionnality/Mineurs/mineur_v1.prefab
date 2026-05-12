@@ -143,7 +143,7 @@ MonoBehaviour:
   speed: 5
   pauseWhenMinining: 0.5
   miningRange: 2
-  cursor: {fileID: 4010664012274787153}
+  cursor: {fileID: 5282498773472374400}
   tilemapManager: {fileID: 4636151565754550378, guid: 17ed2bad09404784c8df8505398cc239, type: 3}
 --- !u!54 &7089034195450040365
 Rigidbody:
@@ -281,11 +281,6 @@ PrefabInstance:
 --- !u!224 &1641710306342161094 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7087103846459834336, guid: 990936d925a4cac47befa0401c8a4b66, type: 3}
-  m_PrefabInstance: {fileID: 8400046414466757926}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4010664012274787153 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4844263643178686071, guid: 990936d925a4cac47befa0401c8a4b66, type: 3}
   m_PrefabInstance: {fileID: 8400046414466757926}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5282498773472374400 stripped
