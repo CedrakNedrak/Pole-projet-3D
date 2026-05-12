@@ -77,9 +77,7 @@ public class CaverneGeneration : MonoBehaviour
         rooms.Add(baseRoom);
         UsedRoom.Add(baseCenter);
         Vector3 spawnPos = new Vector3(baseCenter.x, baseCenter.y, 0f);
-        gameplayManager.SpawnTown(spawnPos, Quaternion.identity, "Cosy Cave", 200, 70, 1, 0, 40, 1000);
-        Camera.main.transform.position = new Vector3(spawnPos.x, spawnPos.y, -10f);
-
+        gameplayManager.SpawnTown(spawnPos, Quaternion.Euler(-90,0,0), "Cosy Cave", 200, 70, 1, 0, 40, 1000);
         int tries = 0;
         int created = 0;
 
@@ -100,6 +98,8 @@ public class CaverneGeneration : MonoBehaviour
             rooms.Add(newRoom);
             created++;
         }
+
+        Camera.main.transform.position = new Vector3(spawnPos.x, spawnPos.y, -10f);
     }
 
     private bool IsTooCloseToExistingRooms(Room candidate, int extraPadding)

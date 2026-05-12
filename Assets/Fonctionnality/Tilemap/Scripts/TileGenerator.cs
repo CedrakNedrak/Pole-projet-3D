@@ -54,6 +54,8 @@ public class TileGenerator : MonoBehaviour
             fogOfWar.InitializeFog();
             fogInitialized = true;
         }
+
+        Camera.main.transform.position = new Vector3(100, 100, -10f);
     }
 
     private void GenerateTilemap()
