@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
-  soldierPrefab: {fileID: 0}
+  soldierPrefab: {fileID: 3974716425168095138, guid: 122bb6ac15dedab41bcfcbdf95d8d040, type: 3}
   soldierPrice: 50
   spawnDistance: 2
 --- !u!114 &5296391341535975259
