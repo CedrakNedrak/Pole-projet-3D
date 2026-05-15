@@ -1,3 +1,5 @@
+using Codice.Client.Common;
+using NUnit;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +19,7 @@ public class CharaMovement : MonoBehaviour
         changeTween += ChangeTween;
     }
 
-    protected void ChangeTween()
+    protected virtual void ChangeTween()
     {
         if (tweenEnCours < path.Count - 1)
         {

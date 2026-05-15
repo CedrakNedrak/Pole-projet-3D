@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCap: 1
-  enemy: {fileID: 5637007982802450945, guid: 536a9f8a960ff2d4ab483e36f8310beb, type: 3}
+  enemy: {fileID: 1432688135666551991, guid: 32741909224db8943ad9b72ac6d04e31, type: 3}
   spawnInterval: 2

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditorInternal;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,26 +10,35 @@ public class Enemy : CharaMovement
     public CaverneGeneration Cavegen { get; set; }
     private void Start()
     {
-        int x = Random.Range(0, 200);
-        int y = Random.Range(0, 200);
+        Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+        int x = Random.Range(-1, 2);
+        int y = Random.Range(-1, 2);
+        Vector3Int nextPos = position + new Vector3Int(x, y, 0);
+        while (x * x == y * y || TileGenerator.tileGenerator.WorldIntMatrice[nextPos.x, nextPos.y] == 2)
+        {
+            x = Random.Range(-1, 2);
+            y = Random.Range(-1, 2);
 
-        path = Pathfinding.pathfinding.Launch(new Vector2Int((int)transform.position.x, (int)transform.position.y), new Vector2Int(x, y));
-        StartTween(path[0]);
+            nextPos = position + new Vector3Int(x, y, 0);
+        }
+
+        StartTween(nextPos);
     }
 
-    void Update()
-    {
-        int x = path[tweenEnCours].x;
-        int y = path[tweenEnCours].y;
-        if (TileGenerator.tileGenerator.WorldIntMatrice[x,y] == 2)
-        {
-            StopTween();
-            tweenEnCours = 0;
-            x = Random.Range(0, 200);
-            y = Random.Range(0, 200);
+    protected override void ChangeTween(){
 
-            path = Pathfinding.pathfinding.Launch(new Vector2Int((int)transform.position.x, (int)transform.position.y), new Vector2Int(x, y));
-            StartTween(path[0]);
+        Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0);
+        int x = Random.Range(-1, 2);
+        int y = Random.Range(-1, 2);
+        Vector3Int nextPos = position + new Vector3Int(x, y, 0);
+        while (x*x==y*y || TileGenerator.tileGenerator.WorldIntMatrice[nextPos.x,nextPos.y] == 2)
+        {
+            x = Random.Range(-1, 2);
+            y = Random.Range(-1, 2);
+
+            nextPos = position + new Vector3Int(x, y, 0);
         }
+            
+        StartTween(nextPos);
     }
 }
