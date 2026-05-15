@@ -13,6 +13,7 @@ public class MineurClickable : Clickable
     public override void OnClick() {
         cursor.SetActive(true);
         firstClick = true;
+        Debug.Log("Right click detected, starting mining.");
     }
 
     public void Update()
@@ -21,9 +22,9 @@ public class MineurClickable : Clickable
         {
             if (Input.GetMouseButtonDown(1))
             {
-
                 mineur.StartMining();
                 firstClick = false;
+                cursor.SetActive(false);
             }
         }
     }

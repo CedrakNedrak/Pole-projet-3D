@@ -19,6 +19,8 @@ public class TownData : MonoBehaviour
     public Ressources ressources { get; private set; }
     [SerializeField] private BuildTown buildTown;
     public BuildTown BuildTown => buildTown;
+    [SerializeField] private GameObject[] townsLevelSprite;
+    public GameObject[] TownsLevelSprite => townsLevelSprite;
     public CameraMovement cameraMovement { get; private set; }
 
     public void SetTownName(string name)
@@ -32,6 +34,7 @@ public class TownData : MonoBehaviour
         this.initialTownName = initialTownName;
         SetTownName(townName);
         townLevelingSystem.SetTownLevel(level);
+        TownsLevelSprite[level].SetActive(true);
         TownLevelingSystem.SetUpgradePrice(upgradePrice);
         townGenerateGold.SetGoldIncome(goldIncome);
         townGenerateGold.SetStartGold(startGold);

@@ -1442,10 +1442,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7467987331260434160, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
-      propertyPath: enemySpawner
-      value: 
-      objectReference: {fileID: 9140435764575868162, guid: 72eb1c43020b35b4ea09a115de219138, type: 3}
+    - target: {fileID: 4255073239930567140, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801743276736693801, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: revealRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
       propertyPath: enemyCaverneGeneration
       value: 
@@ -1475,16 +1479,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1341668243222004709, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
-      propertyPath: m_ClearFlags
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341668243222004709, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
       propertyPath: orthographic
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341668243222004709, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
-      propertyPath: orthographic size
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2644839606822000199, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1524,10 +1520,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2644839606822000199, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168479731140383327, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}
-      propertyPath: m_CameraType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7507452971125890459, guid: 1d6b92b2eb0f1ab48af387478fbca6c8, type: 3}

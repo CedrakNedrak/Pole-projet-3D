@@ -1,3 +1,4 @@
+using log4net.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,19 +8,9 @@ public class Mineur : CharaMovement
 {
     [SerializeField] private float pauseWhenMinining = 0.5f;
     [SerializeField] private int miningRange = 2;
-
-    [SerializeField] private GameObject tilemapManager;
-    
-    private FogOfWar fogOfWar;
-
     private Vector3 endPosition;
     private Vector3 startPosition = new Vector3(0, 2, 0);
 
-    private void Start()
-    {
-        if (tilemapManager != null)
-            fogOfWar = tilemapManager.GetComponent<FogOfWar>();
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -42,11 +33,12 @@ public class Mineur : CharaMovement
             Mathf.RoundToInt(endPosition.x),
             Mathf.RoundToInt(endPosition.y)
         );
-            if (Pathfinding.pathfinding == null)
-            {
-                Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
-                return;
-            }
+
+        if (Pathfinding.pathfinding == null)
+        {
+            Debug.LogError("[Mineur] Pathfinding.pathfinding est NULL. Vérifie que ton objet Pathfinding est bien dans la scène.");
+            return;
+        }
         path = Pathfinding.pathfinding.Launch(startIntPosition, endIntPosition);
 
         if (path == null || path.Count == 0)
@@ -70,8 +62,23 @@ public class Mineur : CharaMovement
             0
         );
 
-        TileGenerator.tileGenerator.DigCell(cell);
-
+        switch (transform.rotation.eulerAngles.z)
+        {
+            case 0 or 180:
+                TileGenerator.tileGenerator.DigCell(cell);
+                cell.y += 1;
+                TileGenerator.tileGenerator.DigCell(cell);
+                cell.y -= 2;
+                TileGenerator.tileGenerator.DigCell(cell);
+                break;
+            case 90 or 270:
+                TileGenerator.tileGenerator.DigCell(cell);
+                cell.x += 1;
+                TileGenerator.tileGenerator.DigCell(cell);
+                cell.x -= 2;
+                TileGenerator.tileGenerator.DigCell(cell);
+                break;
+        }
 
         if (path != null && path.Count > tweenEnCours)
         {
@@ -110,4 +117,16 @@ public class Mineur : CharaMovement
         transform.rotation = Quaternion.Euler(startPosition);
         transform.Rotate(0, 180, -alpha);
     }
+
+    public override void ChangeTween()
+    {
+        if (tweenEnCours < path.Count - 1)
+        {
+            tweenEnCours += 1;
+            StartTween(path[tweenEnCours]);
+            Rotate();
+        }
+        else { tweenEnCours = 0; }
+    }
+    
 }

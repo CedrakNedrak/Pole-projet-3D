@@ -17,7 +17,7 @@ public class CharaMovement : MonoBehaviour
         changeTween += ChangeTween;
     }
 
-    protected void ChangeTween()
+    public virtual void ChangeTween()
     {
         if (tweenEnCours < path.Count - 1)
         {

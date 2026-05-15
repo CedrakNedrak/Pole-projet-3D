@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGold: 200
-  goldIncome: 60
+  goldIncome: 25
   townData: {fileID: 2553929081644536717}
 --- !u!114 &2553929081644536717
 MonoBehaviour:
@@ -72,6 +72,9 @@ MonoBehaviour:
   spawnMiner: {fileID: 101801839776644569}
   spawnSoldier: {fileID: -9215176206139041377}
   buildTown: {fileID: 6588953046390208416}
+  townsLevelSprite:
+  - {fileID: 1813907173336600274}
+  - {fileID: 298346444893514405}
 --- !u!114 &101801839776644569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,9 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
-  minerPrefab: {fileID: 1642776669101629188, guid: 965f971520971be41899173fd795012e, type: 3}
+  minerPrefab: {fileID: 8831552736175161625, guid: 978563173b00efd4da0032b8ab52390f, type: 3}
   minerPrice: 40
-  spawnDistance: 2
+  spawnDistance: 5
 --- !u!114 &-9215176206139041377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +106,7 @@ MonoBehaviour:
   townData: {fileID: 2553929081644536717}
   soldierPrefab: {fileID: 3974716425168095138, guid: 122bb6ac15dedab41bcfcbdf95d8d040, type: 3}
   soldierPrice: 50
-  spawnDistance: 2
+  spawnDistance: 5
 --- !u!114 &5296391341535975259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,9 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
   upgradePrice: 10
-  townsLevelSprite:
-  - {fileID: 1813907173336600274}
-  - {fileID: 298346444893514405}
   townLevel: 1
 --- !u!114 &6588953046390208416
 MonoBehaviour:
@@ -298,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
       propertyPath: m_Name
       value: tour_ruines_v1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7a1eeb8837796543a152636a8ba4dbb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

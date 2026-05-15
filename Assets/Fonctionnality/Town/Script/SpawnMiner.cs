@@ -8,7 +8,7 @@ public class SpawnMiner : MonoBehaviour
     [SerializeField] private int minerPrice = 50;
     public int MinerPrice => minerPrice;
     private Vector3 spawnPosition;
-    [SerializeField] private float spawnDistance = 2f;
+    [SerializeField] private float spawnDistance = 10f;
 
     public void Spawn()
     {
@@ -17,7 +17,6 @@ public class SpawnMiner : MonoBehaviour
             Vector2 spawnDirection2D = Random.onUnitSphere;
             Vector3 spawnDirection = new Vector3(spawnDirection2D.x, spawnDirection2D.y, 0);
             spawnPosition = transform.position + spawnDirection * spawnDistance;
-            Debug.Log(Vector2.SignedAngle(Vector2.right, spawnDirection2D));
             Quaternion spawnRotation = Quaternion.Euler(0, 180, -Vector2.SignedAngle(Vector2.right, spawnDirection2D));//180 because of prefab
             Instantiate(minerPrefab, spawnPosition, spawnRotation);
         }

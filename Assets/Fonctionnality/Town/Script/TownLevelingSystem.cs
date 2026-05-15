@@ -5,7 +5,6 @@ public class TownLevelingSystem : MonoBehaviour
     [SerializeField] private TownData townData;
     [SerializeField] private int upgradePrice = 5;
     public int UpgradePrice => upgradePrice;
-    [SerializeField] GameObject[] townsLevelSprite;
     [SerializeField] private int townLevel = 1;
     public int TownLevel => townLevel;
 
@@ -15,12 +14,12 @@ public class TownLevelingSystem : MonoBehaviour
         {
             SetTownLevel(townLevel + 1);
 
-            foreach (var item in townsLevelSprite)
+            foreach (var item in townData.TownsLevelSprite)
             {
                 item.SetActive(false);
             }
 
-            townsLevelSprite[townLevel].SetActive(true);
+            townData.TownsLevelSprite[townLevel].SetActive(true);
         }
     }
     public void SetTownLevel(int level)
