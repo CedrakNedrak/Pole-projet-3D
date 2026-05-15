@@ -19,5 +19,9 @@ public class DebugTools : MonoBehaviour
                 camera.EnableCameraMovement();
             }
         }
+        if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            GameTimer.Time += 60f;
+        }
     }
 }
