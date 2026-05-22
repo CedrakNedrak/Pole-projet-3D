@@ -1,9 +1,15 @@
+using NUnit.Framework.Constraints;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class AllyTroopMovement : TroopMovement
 {
     [SerializeField] private GameObject cursorCanvas;
-
+    protected override void Start()
+    {
+        base.Start();
+        EntityManager.Instance.RegisterAllyTroop(this);
+    }
     public AllyTroopMovement(TroopType troopType) : base(troopType) { }
 
     private Vector3 TakeEndPosition()
@@ -29,6 +35,14 @@ public class AllyTroopMovement : TroopMovement
         if (cursorCanvas != null)
         {
             cursorCanvas.SetActive(false);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (EntityManager.Instance != null)
+        {
+            EntityManager.Instance.UnregisterAllyTroop(this);
         }
     }
 }
