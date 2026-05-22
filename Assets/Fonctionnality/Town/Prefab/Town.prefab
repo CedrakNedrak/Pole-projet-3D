@@ -85,9 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
-  minerPrefab: {fileID: 1642776669101629188, guid: 965f971520971be41899173fd795012e, type: 3}
+  minerPrefab: {fileID: 8407825358779204063, guid: 967d41b7bb77f4c4ab6f14d27f0d1fcf, type: 3}
   minerPrice: 40
-  spawnDistance: 2
+  spawnDistance: 4
 --- !u!114 &-9215176206139041377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,9 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   townData: {fileID: 2553929081644536717}
-  soldierPrefab: {fileID: 3974716425168095138, guid: 122bb6ac15dedab41bcfcbdf95d8d040, type: 3}
+  soldierPrefab: {fileID: 3343822973677121863, guid: ff4cf7e426796da45b3ce233f907c832, type: 3}
   soldierPrice: 50
-  spawnDistance: 2
+  spawnDistance: 4
 --- !u!114 &5296391341535975259
 MonoBehaviour:
   m_ObjectHideFlags: 0
