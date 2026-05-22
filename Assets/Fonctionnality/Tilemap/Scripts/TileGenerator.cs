@@ -22,17 +22,21 @@ public class TileGenerator : MonoBehaviour
     public static TileGenerator tileGenerator;
 
     private GameObject[,] worldMatrice;
-    private int[,] worldIntMatrice;
+    private int[,] miningWorldIntMatrice;
+    private int[,] normalWorldIntMatrice;
 
     public GameObject[,] WorldMatrice => worldMatrice;
-    public int[,] WorldIntMatrice => worldIntMatrice;
+
+    public int[,] MiningWorldIntMatrice => miningWorldIntMatrice;
+    public int[,] NormalWorldIntMatrice => normalWorldIntMatrice;
 
     private bool fogInitialized = false;
     public Vector2 MainTownPosition { get; private set; }
     private void Awake()
     {
         worldMatrice = new GameObject[width, length];
-        worldIntMatrice = new int[width, length];
+        miningWorldIntMatrice = new int[width, length];
+        normalWorldIntMatrice = new int[width, length];
 
         tileGenerator = this;
     }
@@ -79,7 +83,8 @@ public class TileGenerator : MonoBehaviour
                 worldMatrice[x, y] = gO;
 
                 // 2 = mur / bloc plein
-                worldIntMatrice[x, y] = 2;
+                miningWorldIntMatrice[x, y] = 2;
+                normalWorldIntMatrice[x, y] = -1;
             }
         }
     }
@@ -95,7 +100,7 @@ public class TileGenerator : MonoBehaviour
             return false;
 
         // 1 = vide / creusé / accessible
-        return worldIntMatrice[x, y] == 1;
+        return MiningWorldIntMatrice[x, y] == 1;//or normalWorldIntMatrice[x, y] == 1; ->same
     }
 
     public void DigCell(Vector3Int cell)
@@ -109,7 +114,8 @@ public class TileGenerator : MonoBehaviour
         if (worldMatrice[x, y] != null)
             worldMatrice[x, y].SetActive(false);
 
-        worldIntMatrice[x, y] = 1;
+        miningWorldIntMatrice[x, y] = 1;
+        normalWorldIntMatrice[x, y] = 1;
 
         if (fogInitialized && fogOfWar != null)
             fogOfWar.RefreshVisibility(cell);
