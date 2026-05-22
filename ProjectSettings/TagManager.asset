@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Undefined
   - Map
+  - Town
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ally
+  - Enemy
   - 
   - 
   - 

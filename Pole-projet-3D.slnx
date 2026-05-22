@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Project Path="Tilemap.csproj" />
+  <Project Path="BattleSystem.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Towns.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
@@ -11,6 +12,7 @@
   <Project Path="Troop.csproj" />
   <Project Path="Motion.csproj" />
   <Project Path="CharaMovement.csproj" />
+  <Project Path="TroopCore.csproj" />
   <Project Path="Mineur.csproj" />
   <Project Path="Ressources.csproj" />
   <Project Path="EnemyTroops.csproj" />
