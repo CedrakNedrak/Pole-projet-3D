@@ -30,8 +30,30 @@ public class MineurMovement : AllyTroopMovement
             0
         );
 
-        TileGenerator.tileGenerator.DigCell(cell);
-
+        if(tweenEnCours + 1 < path.Count)
+        {
+           
+            Vector3 direction = Vector3Int.RoundToInt(transform.position) - path[tweenEnCours + 1];
+            int compteur = 0;
+            while (direction.x != 0 && direction.y != 0)
+            {
+                compteur += 1;
+                direction = path[tweenEnCours - compteur] - Vector3Int.RoundToInt(transform.position);
+            }
+            tweenEnCours -= compteur;
+            direction = path[tweenEnCours - compteur - 1] - Vector3Int.RoundToInt(transform.position);
+            TileGenerator.tileGenerator.DigCell(cell);
+            if (direction.y != 0)
+            {
+                TileGenerator.tileGenerator.DigCell(cell + new Vector3Int(1, 0, 0));
+                TileGenerator.tileGenerator.DigCell(cell - new Vector3Int(1, 0, 0));
+            }
+            if (direction.x != 0)
+            {
+                TileGenerator.tileGenerator.DigCell(cell + new Vector3Int(0, 1, 0));
+                TileGenerator.tileGenerator.DigCell(cell - new Vector3Int(0, 1, 0));
+            }
+        }
 
         if (path != null && path.Count > tweenEnCours)
         {
