@@ -8,6 +8,7 @@ public class EnemyTroopMovement : TroopMovement
     {
         base.Start();
         StartMoving();
+        EntityManager.Instance.RegisterEnemyTroop(this);
     }
 
     public void StartMoving()
@@ -57,5 +58,13 @@ public class EnemyTroopMovement : TroopMovement
     {
         Rotate();
         StartMoving();
+    }
+
+    private void OnDestroy()
+    {
+        if (EntityManager.Instance != null)
+        {
+            EntityManager.Instance.UnregisterEnemyTroop(this);
+        }
     }
 }
