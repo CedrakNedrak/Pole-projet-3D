@@ -13,11 +13,10 @@ public class EnemyTroopMovement : TroopMovement
 
     public void StartMoving()
     {
-        int x = Random.Range(-2, 3);
-        int y = Random.Range(-2, 3);
+        int x = Random.Range(-7, 8);
+        int y = Random.Range(-7, 8);
         Vector3 startPos = transform.position;
         Vector3 endPos = startPos + new Vector3(x, y, 0);
-        Debug.Log($" is moving from {startPos} to {endPos}");
         base.StartMoving(startPos, endPos);
     }
 

@@ -49,7 +49,8 @@ public class EnemyCaverneGeneration : MonoBehaviour
                 bounds.yMin + enemyBase.y,
                 0
             );
-            List<Vector3Int> path = Pathfinding.pathfinding.Launch(enemyBase, centers[valeur], TileGenerator.tileGenerator.NormalWorldIntMatrice);
+            List<Vector3Int> path = Pathfinding.pathfinding.Launch(enemyBase, centers[valeur], TileGenerator.tileGenerator.MiningWorldIntMatrice);
+
             foreach (var val in path)
             {
                 GameObject go = TileGenerator.tileGenerator.WorldMatrice[val.x, val.y];
