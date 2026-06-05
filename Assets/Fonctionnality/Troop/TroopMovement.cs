@@ -57,7 +57,7 @@ public class TroopMovement : CharaMovement
 
     protected void Rotate()
     {
-        if (path == null)
+        if (path == null || tweenEnCours >= path.Count)
             return;
 
         Vector3 direction = path[tweenEnCours] - Vector3Int.RoundToInt(transform.position);

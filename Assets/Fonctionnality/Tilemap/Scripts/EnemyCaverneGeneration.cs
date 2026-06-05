@@ -9,6 +9,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
 
     private Tilemap map;
     [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject enemyBase;
     [SerializeField] private int numOfEnnemyBase = 3;
 
     public void PlaceEnemyBase()
@@ -28,6 +29,8 @@ public class EnemyCaverneGeneration : MonoBehaviour
 
         caveGen.UsedRoom.Add(centers[valeur]);
 
+        Instantiate(enemyBase, new Vector3(centers[valeur].x, centers[valeur].y, 0),Quaternion.Euler(90f, 0f, 0f), transform);
+
         for (int i = 0; i < numOfEnnemyBase; i++)
         {
             float minMag = (float)caveGen.Height + caveGen.Width;
@@ -37,8 +40,6 @@ public class EnemyCaverneGeneration : MonoBehaviour
             {
                 if (caveGen.UsedRoom.Contains(center))
                     continue;
-
-                Debug.Log(minMag);
                 if ((center - new Vector2(mainCell.x, mainCell.y)).magnitude < minMag)
                 {
                     minMag = (center - new Vector2(mainCell.x, mainCell.y)).magnitude;
@@ -51,16 +52,18 @@ public class EnemyCaverneGeneration : MonoBehaviour
                 bounds.yMin + enemyBase.y,
                 0
             );
-            List<Vector3Int> path = Pathfinding.pathfinding.Launch(enemyBase, centers[valeur], TileGenerator.tileGenerator.NormalWorldIntMatrice);
+            List<Vector3Int> path = Pathfinding.pathfinding.Launch(enemyBase, centers[valeur], TileGenerator.tileGenerator.MiningWorldIntMatrice);
+
             foreach (var val in path)
             {
                 GameObject go = TileGenerator.tileGenerator.WorldMatrice[val.x, val.y];
                 TileGenerator.tileGenerator.MiningWorldIntMatrice[val.x, val.y] = 1;
                 TileGenerator.tileGenerator.NormalWorldIntMatrice[val.x, val.y] = 1;
+                Debug.Log("Dig");
                 go.SetActive(false);
             }
 
-            GameObject gO = Instantiate(enemySpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
+            Instantiate(enemySpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
             caveGen.UsedRoom.Add(enemyBase);
         }
     }

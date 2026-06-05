@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
             if (enemyCount < enemyCap)
             {
                 Vector3 position = transform.position;
+                position.z = 0;
                 position.y--;
 
                 Instantiate(enemy, position, enemy.transform.rotation);
