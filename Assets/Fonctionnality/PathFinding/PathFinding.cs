@@ -35,7 +35,6 @@ public class Pathfinding : MonoBehaviour
         List<Vector3Int> liste = new();
         if (path == null)
         {
-            Debug.Log("Aucun chemin possible");
             return liste;
         }
 

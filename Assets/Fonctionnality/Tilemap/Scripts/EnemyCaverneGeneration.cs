@@ -9,6 +9,7 @@ public class EnemyCaverneGeneration : MonoBehaviour
 
     private Tilemap map;
     [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject enemyBase;
     [SerializeField] private int numOfEnnemyBase = 3;
 
     public void PlaceEnemyBase()
@@ -27,6 +28,8 @@ public class EnemyCaverneGeneration : MonoBehaviour
         );
 
         caveGen.UsedRoom.Add(centers[valeur]);
+
+        Instantiate(enemyBase, new Vector3(centers[valeur].x, centers[valeur].y, 0),Quaternion.Euler(90f, 0f, 0f), transform);
 
         for (int i = 0; i < numOfEnnemyBase; i++)
         {

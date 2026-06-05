@@ -8,16 +8,12 @@ public class EnemyTroopMovement : TroopMovement
     {
         base.Start();
         EntityManager.Instance.RegisterEnemyTroop(this);
-        StartMoving();
+        ReStartMoving();
     }
 
-    public void StartMoving()
+    public virtual void ReStartMoving()
     {
-        int x = Random.Range(-7, 8);
-        int y = Random.Range(-7, 8);
-        Vector3 startPos = transform.position;
-        Vector3 endPos = startPos + new Vector3(x, y, 0);
-        base.StartMoving(startPos, endPos);
+        base.StartMoving(transform.position, transform.position);
     }
 
     void Update()
@@ -37,13 +33,13 @@ public class EnemyTroopMovement : TroopMovement
     {
         StopTween();
         tweenEnCours = 0;
-        StartMoving();
+        ReStartMoving();
     }
 
     public void ContinueMovement()
     {
         Rotate();
-        StartMoving();
+        ReStartMoving();
     }
 
     private void OnDestroy()
@@ -63,7 +59,7 @@ public class EnemyTroopMovement : TroopMovement
             Rotate();
         }
         else {
-            StartMoving();
+            ReStartMoving();
             tweenEnCours = 0; }
     }
 }
