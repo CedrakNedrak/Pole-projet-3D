@@ -38,7 +38,9 @@ public class CharaMovement : MonoBehaviour
 
     protected void StartTween(Vector3Int end)
     {
+        Vector3 endPos = new Vector3(end.x, end.y - 0.5f, end.z);
         Vector3 beginingPosition = transform.position;
+        Debug.Log("Start tween from " + beginingPosition + " to " + endPos);
         float time = (end - beginingPosition).magnitude / speed;
         Tween tween = new Tween(time, t =>
         {
