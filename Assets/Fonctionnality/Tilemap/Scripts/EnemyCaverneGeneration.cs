@@ -37,8 +37,6 @@ public class EnemyCaverneGeneration : MonoBehaviour
             {
                 if (caveGen.UsedRoom.Contains(center))
                     continue;
-
-                Debug.Log(minMag);
                 if ((center - new Vector2(mainCell.x, mainCell.y)).magnitude < minMag)
                 {
                     minMag = (center - new Vector2(mainCell.x, mainCell.y)).magnitude;
@@ -57,10 +55,11 @@ public class EnemyCaverneGeneration : MonoBehaviour
                 GameObject go = TileGenerator.tileGenerator.WorldMatrice[val.x, val.y];
                 TileGenerator.tileGenerator.MiningWorldIntMatrice[val.x, val.y] = 1;
                 TileGenerator.tileGenerator.NormalWorldIntMatrice[val.x, val.y] = 1;
+                Debug.Log("Dig");
                 go.SetActive(false);
             }
 
-            GameObject gO = Instantiate(enemySpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
+            Instantiate(enemySpawner, secondCell, Quaternion.Euler(90f, 0f, 0f), transform);
             caveGen.UsedRoom.Add(enemyBase);
         }
     }

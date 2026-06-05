@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class DebugTools : MonoBehaviour
 {
@@ -25,6 +24,12 @@ public class DebugTools : MonoBehaviour
             Vector2 pos = TileGenerator.tileGenerator.MainTownPosition;
             int z = (int)(Mathf.Tan(-40 * Mathf.PI / 180) * pos.y) - 10;
             Camera.main.transform.position = new Vector3(pos.x, pos.y, z);
+        }
+
+        if(Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            GameTimer timer = GameTimer.instance;
+            timer.Temps += 60;
         }
     }
 }

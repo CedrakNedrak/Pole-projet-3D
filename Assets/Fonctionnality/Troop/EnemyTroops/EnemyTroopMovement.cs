@@ -7,44 +7,31 @@ public class EnemyTroopMovement : TroopMovement
     protected override void Start()
     {
         base.Start();
-        StartMoving();
         EntityManager.Instance.RegisterEnemyTroop(this);
+        StartMoving();
     }
 
     public void StartMoving()
     {
-        int x = Random.Range(0, 200);
-        int y = Random.Range(0, 200);
+        int x = Random.Range(-2, 3);
+        int y = Random.Range(-2, 3);
         Vector3 startPos = transform.position;
-        Vector3 endPos = new Vector3(x, y, 0);
+        Vector3 endPos = startPos + new Vector3(x, y, 0);
+        Debug.Log($" is moving from {startPos} to {endPos}");
         base.StartMoving(startPos, endPos);
     }
 
     void Update()
     {
-        if (IsBumpingAgainstWall() || HasFinishedMovement())
+        if (HasFinishedMovement())
         {
             StartNextMovement();
-        }
-        else
-        {
-            ContinueMovement();
         }
     }
 
     private bool HasFinishedMovement()
     {
-        return (path != null && path.Count > tweenEnCours);
-    }
-
-    public bool IsBumpingAgainstWall()
-    {
-        Vector2Int targetNextPos = new Vector2Int(path[tweenEnCours].x, path[tweenEnCours].y);
-        if (TileGenerator.tileGenerator.NormalWorldIntMatrice[targetNextPos.x, targetNextPos.y] == -1)
-        {
-            return true;
-        }
-        return false;
+        return (path == null || path.Count <= tweenEnCours);
     }
 
     public void StartNextMovement()
@@ -66,5 +53,18 @@ public class EnemyTroopMovement : TroopMovement
         {
             EntityManager.Instance.UnregisterEnemyTroop(this);
         }
+    }
+
+    public override void ChangeTween()
+    {
+        if (tweenEnCours < path.Count - 1)
+        {
+            tweenEnCours += 1;
+            StartTween(path[tweenEnCours]);
+            Rotate();
+        }
+        else {
+            StartMoving();
+            tweenEnCours = 0; }
     }
 }
