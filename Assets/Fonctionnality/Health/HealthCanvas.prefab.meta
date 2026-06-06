@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Fonctionnality/Troop/AllyTroops/Mineur/mineur_v2.prefab.meta
+guid: 94f173a7e982ee34981cd7270a2b3686
+========
 guid: 76e2891b1c5128a4e879c9e910adf94a
+>>>>>>>> main:Assets/Fonctionnality/Health/HealthCanvas.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

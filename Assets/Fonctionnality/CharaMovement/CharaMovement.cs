@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CharaMovement : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class CharaMovement : MonoBehaviour
         changeTween += ChangeTween;
     }
 
-    protected void ChangeTween()
+    public virtual void ChangeTween()
     {
         if (tweenEnCours < path.Count - 1)
         {
@@ -38,6 +39,7 @@ public class CharaMovement : MonoBehaviour
 
     protected void StartTween(Vector3Int end)
     {
+        Vector3 endPos = new Vector3(end.x, end.y, end.z);
         Vector3 beginingPosition = transform.position;
         float time = (end - beginingPosition).magnitude / speed;
         Tween tween = new Tween(time, t =>

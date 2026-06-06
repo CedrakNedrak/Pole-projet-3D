@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.UI.Image;
 
 public class MouseClickDetection : MonoBehaviour
 {
@@ -9,15 +10,15 @@ public class MouseClickDetection : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
+            foreach (var h in hits)
             {
-                GameObject clickedObject = hit.collider.gameObject;
+                GameObject clickedObject = h.collider.gameObject;
                 if (clickedObject.TryGetComponent(out Clickable clickableObject))
                 {
-
                     clickableObject.OnClick();
+                    break;
                 }
             }
         }

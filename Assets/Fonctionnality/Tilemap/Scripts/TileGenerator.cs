@@ -31,7 +31,7 @@ public class TileGenerator : MonoBehaviour
     public int[,] NormalWorldIntMatrice => normalWorldIntMatrice;
 
     private bool fogInitialized = false;
-
+    public Vector2 MainTownPosition { get; private set; }
     private void Awake()
     {
         worldMatrice = new GameObject[width, length];
@@ -43,9 +43,11 @@ public class TileGenerator : MonoBehaviour
 
     private void Start()
     {
+        Camera.main.transform.position = new Vector3(0, 0, -10f);
+
         GenerateTilemap();
 
-        caveGenerator.GenerateCaves(tilemap);
+        MainTownPosition = caveGenerator.GenerateCaves(tilemap);
 
         if (enemyCaverneGeneration != null)
             enemyCaverneGeneration.PlaceEnemyBase();
@@ -58,6 +60,7 @@ public class TileGenerator : MonoBehaviour
             fogOfWar.InitializeFog();
             fogInitialized = true;
         }
+
     }
 
     private void GenerateTilemap()

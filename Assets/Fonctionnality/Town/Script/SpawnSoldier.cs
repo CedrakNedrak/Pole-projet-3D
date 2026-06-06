@@ -14,17 +14,12 @@ public class SpawnSoldier : MonoBehaviour
     {
         if (townData.ressources.SpendGold(soldierPrice))
         {
-            float randomAngle = Random.Range(0f, 2 * Mathf.PI);
-            Vector2 spawnDirection2D = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle));
+            Vector2 spawnDirection2D = Random.onUnitSphere;
             Vector3 spawnDirection = new Vector3(spawnDirection2D.x, spawnDirection2D.y, 0);
             spawnPosition = transform.position + spawnDirection * spawnDistance;
-
-            float angle = Vector2.SignedAngle(Vector2.right, spawnDirection2D);
-            Quaternion firstRotation = Quaternion.Euler(0, 0, -90 + angle);//order of rotation: z, x, y
-            Quaternion secondRotation = Quaternion.Euler(-90, 0, 0);
-            Quaternion finalRot = firstRotation * secondRotation;
-
-            Instantiate(soldierPrefab, spawnPosition, finalRot);
+            Debug.Log(Vector2.SignedAngle(Vector2.right, spawnDirection2D));
+            Quaternion spawnRotation = Quaternion.Euler(180, 0, -Vector2.SignedAngle(Vector2.right, spawnDirection2D));//180 because of prefab
+            Instantiate(soldierPrefab, spawnPosition, spawnRotation);
         }
     }
 
