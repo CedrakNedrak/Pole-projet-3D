@@ -5,9 +5,11 @@ using UnityEngine;
 public class AttackState : BaseState
 {
     public float AttackRange;
-    public AttackState(BattleStateMachine battleStateMachine, float enemyDetectionRadius, float attackRange) : base(battleStateMachine, enemyDetectionRadius)
+    public float AttackPower;
+    public AttackState(BattleStateMachine battleStateMachine, float enemyDetectionRadius, float attackRange, float attackPower) : base(battleStateMachine, enemyDetectionRadius)
     {
         this.AttackRange = attackRange;
+        this.AttackPower = attackPower;
     }
     public override Dictionary<Func<float, bool>, BaseState> TransitionConditions => new Dictionary<Func<float, bool>, BaseState>
     {
@@ -17,16 +19,20 @@ public class AttackState : BaseState
     public override void Enter() { }
     public override void Update()
     {
-        base.Update();
         if (r < AttackRange)
         {
             Attack(closestEnemy);
+        }
+        else
+        {
+            base.Update();
         }
     }
     public override void Exit() { }
 
     private void Attack(Collider enemyCollider)
     {
-        // Implement attack logic here
+        TroopHealth enemyHealth = enemyCollider.GetComponent<TroopHealth>();
+        enemyHealth.TakeDamage(AttackPower);
     }
 }

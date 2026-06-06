@@ -28,7 +28,7 @@ public class TroopMovement : CharaMovement
         this.troopType = troopType;
     }
 
-    protected void StartMoving(Vector3 startPos, Vector3 endPos)
+    public void StartMoving(Vector3 startPos, Vector3 endPos)
     {
         startPosition = startPos;
         endPosition = endPos;

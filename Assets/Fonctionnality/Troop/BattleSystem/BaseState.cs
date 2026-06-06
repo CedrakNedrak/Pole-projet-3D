@@ -13,6 +13,8 @@ public abstract class BaseState : IState
         this.enemyDetectionRadius = enemyDetectionRadius;
     }
     public virtual MonoBehaviour Mono() => BattleStateMachine.troopContext.Mono();
+    public virtual TroopMovement TroopMovement() => BattleStateMachine.troopContext.TroopMovement();
+    public virtual Vector3 Position() => BattleStateMachine.troopContext.Position();
     public abstract Dictionary<Func<float, bool>, BaseState> TransitionConditions { get; }
     public virtual float EnemyDetectionRadius() => enemyDetectionRadius;
     public abstract void Enter();
@@ -20,18 +22,7 @@ public abstract class BaseState : IState
     public Collider closestEnemy { get; set; }
     public virtual void Update()
     {
-        var (closestEnemy, r) = BattleStateMachine.IdentifyClosestEnemy();
-        this.r = r;
-        this.closestEnemy = closestEnemy;
-        foreach (Func<float, bool> condition in TransitionConditions.Keys)
-        {
-            if (condition(r))
-            {
-                BaseState nextState = TransitionConditions[condition];
-                BattleStateMachine.ChangeState(nextState);
-                break;
-            }
-        }
+        TroopMovement().StartMoving(Position(), closestEnemy.transform.position);
     }
     public abstract void Exit();
 }

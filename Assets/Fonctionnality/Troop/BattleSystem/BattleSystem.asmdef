@@ -2,7 +2,9 @@
     "name": "BattleSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:de822f84b7fcc2e49b36c85f28e78370"
+        "GUID:de822f84b7fcc2e49b36c85f28e78370",
+        "GUID:568535fd3fe98444d8652606a1fb8d58",
+        "GUID:183c3e419589fcf4697f9a8f2bac31e1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

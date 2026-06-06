@@ -9,7 +9,6 @@
   <Project Path="AllyTroops.csproj" />
   <Project Path="Cursor.csproj" />
   <Project Path="PathFinding.csproj" />
-  <Project Path="Troop.csproj" />
   <Project Path="Motion.csproj" />
   <Project Path="CharaMovement.csproj" />
   <Project Path="TroopCore.csproj" />
@@ -18,6 +17,7 @@
   <Project Path="EnemyTroops.csproj" />
   <Project Path="Spawner.csproj" />
   <Project Path="Managers.csproj" />
+  <Project Path="Troop.csproj" />
   <Project Path="Clickable.csproj" />
   <Project Path="Warrior.csproj" />
   <Project Path="Camera.csproj" />

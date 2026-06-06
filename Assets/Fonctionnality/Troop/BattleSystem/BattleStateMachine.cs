@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BattleStateMachine
@@ -12,15 +13,16 @@ public class BattleStateMachine
 
     public BattleStateMachine(ITroopContext troopContext)
     {
-        DefendState = new DefendState(this, 5f);
-        AttackState = new AttackState(this, 5f, 3f);
-        PursueState = new PursueState(this, 5f);
-        AlertState = new AlertState(this, 5f, 2f);
+        DefendState = new DefendState(this, 2f);
+        AttackState = new AttackState(this, 5f, 3f, 10f);
+        PursueState = new PursueState(this, 10f);
+        AlertState = new AlertState(this, 8f, 2f);
         currentState = DefendState;
         this.troopContext = troopContext;
     }
     public void Update()
     {
+        ChangeStateBasedOnConditions();
         currentState.Update();
     }
     public void ChangeState(BaseState newState)
@@ -45,5 +47,21 @@ public class BattleStateMachine
             }
         }
         return (closestEnemy, minDistance);
+    }
+
+    public void ChangeStateBasedOnConditions()
+    {
+        var (closestEnemy, r) = IdentifyClosestEnemy();
+        currentState.r = r;
+        currentState.closestEnemy = closestEnemy;
+        foreach (Func<float, bool> condition in currentState.TransitionConditions.Keys)
+        {
+            if (condition(r))
+            {
+                BaseState nextState = currentState.TransitionConditions[condition];
+                ChangeState(nextState);
+                break;
+            }
+        }
     }
 }

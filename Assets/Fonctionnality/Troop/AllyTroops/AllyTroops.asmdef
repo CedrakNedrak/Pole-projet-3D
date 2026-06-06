@@ -2,9 +2,9 @@
     "name": "AllyTroops",
     "rootNamespace": "",
     "references": [
-        "GUID:19412d1beddfb4e41a8fb8e73ab902be",
         "GUID:6b730db3648620844a20889526a6954a",
-        "GUID:183c3e419589fcf4697f9a8f2bac31e1"
+        "GUID:183c3e419589fcf4697f9a8f2bac31e1",
+        "GUID:de822f84b7fcc2e49b36c85f28e78370"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
