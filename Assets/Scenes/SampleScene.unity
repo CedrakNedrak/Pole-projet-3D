@@ -1096,6 +1096,51 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2758700536668300064, guid: 313b287e7a44c24458479892874e5ea0, type: 3}
   m_PrefabInstance: {fileID: 7225267701233058984}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1312753523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312753525}
+  - component: {fileID: 1312753524}
+  m_Layer: 0
+  m_Name: OreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1312753524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312753523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379ff22b8254efe44afbabb991ce4f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPerOre: 25
+--- !u!4 &1312753525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312753523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100.319214, y: 99.635414, z: -0.073797226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342426260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,6 +1676,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8843506460640724417, guid: 813f0a6cd2be3824ea3470f5e7e4ea37, type: 3}
     - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: oreScale
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: oreChance
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: oreManager
+      value: 
+      objectReference: {fileID: 1312753524}
+    - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
+      propertyPath: oreDecorationPrefab
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 6f02d43894d4d13488afaa8645cd45d8, type: 3}
+    - target: {fileID: 8512939995802293553, guid: cb525f59bd320494f8002bfb403e7030, type: 3}
       propertyPath: enemyCaverneGeneration
       value: 
       objectReference: {fileID: 237058730}
@@ -1850,3 +1911,4 @@ SceneRoots:
   - {fileID: 124052169}
   - {fileID: 196742546}
   - {fileID: 118391797}
+  - {fileID: 1312753525}
