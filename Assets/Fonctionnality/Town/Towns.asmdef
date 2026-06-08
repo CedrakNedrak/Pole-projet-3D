@@ -1,0 +1,19 @@
+{
+    "name": "Towns",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6b730db3648620844a20889526a6954a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:f5aa1ff052ffc8e4b9291a72fc23824e",
+        "GUID:41f783c2fffeadb45990be83db04f144"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
