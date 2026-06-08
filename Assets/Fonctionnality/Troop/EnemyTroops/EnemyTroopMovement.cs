@@ -7,7 +7,16 @@ public class EnemyTroopMovement : TroopMovement
     protected override void Start()
     {
         base.Start();
-        EntityManager.Instance.RegisterEnemyTroop(this);
+
+        if (EntityManager.Instance != null)
+        {
+            EntityManager.Instance.RegisterEnemyTroop(this);
+        }
+        else
+        {
+            Debug.LogError("EntityManager.Instance is null! Make sure EntityManager is initialized before EnemyTroopMovement.");
+        }
+
         ReStartMoving();
     }
 
