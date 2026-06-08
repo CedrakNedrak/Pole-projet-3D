@@ -39,6 +39,7 @@ public class MineurMovement : AllyTroopMovement
             tweenEnCours -= compteur;
             direction = path[tweenEnCours - compteur - 1] - Vector3Int.RoundToInt(transform.position);
             TileGenerator.tileGenerator.DigCell(cell);
+            AudioManager.Instance.RockBroken();
         
         }
 
