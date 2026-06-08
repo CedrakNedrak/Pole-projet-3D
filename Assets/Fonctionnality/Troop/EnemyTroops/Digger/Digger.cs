@@ -11,7 +11,7 @@ public class Digger : EnemyTroopMovement
     private float timer;
     private TownData cible;
 
-    public Digger() : base(TroopType.MiningTroop) { }
+    public Digger() : base(TroopType.MiningTroop, Quaternion.identity) { }
     public override void ReStartMoving()
     {
         Vector3 mainPos = TileGenerator.tileGenerator.MainTownPosition;
@@ -70,4 +70,3 @@ public class Digger : EnemyTroopMovement
 
 }
 
- 
