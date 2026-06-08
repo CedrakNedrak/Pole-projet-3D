@@ -16,9 +16,10 @@
   <Project Path="Ressources.csproj" />
   <Project Path="TroopCore.csproj" />
   <Project Path="Mineur.csproj" />
-  <Project Path="Troop.csproj" />
+  <Project Path="Faction.csproj" />
   <Project Path="EnemyTroops.csproj" />
   <Project Path="Managers.csproj" />
+  <Project Path="Troop.csproj" />
   <Project Path="Clickable.csproj" />
   <Project Path="Warrior.csproj" />
   <Project Path="Camera.csproj" />

@@ -1,5 +1,3 @@
-using NUnit.Framework.Constraints;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class AllyTroopMovement : TroopMovement

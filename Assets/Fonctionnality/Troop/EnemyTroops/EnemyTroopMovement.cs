@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class EnemyTroopMovement : TroopMovement
 {
     public EnemyTroopMovement(TroopType troopType) : base(troopType) { }
@@ -58,8 +56,10 @@ public class EnemyTroopMovement : TroopMovement
             StartTween(path[tweenEnCours]);
             Rotate();
         }
-        else {
+        else
+        {
             ReStartMoving();
-            tweenEnCours = 0; }
+            tweenEnCours = 0;
+        }
     }
 }
