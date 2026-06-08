@@ -90,6 +90,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 4272399822916740232, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4694166263858185579, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.74
+      objectReference: {fileID: 0}
     - target: {fileID: 5398070536776438142, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.64
