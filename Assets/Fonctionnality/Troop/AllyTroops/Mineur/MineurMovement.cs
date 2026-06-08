@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class MineurMovement : AllyTroopMovement
 {
-    [SerializeField] private float pauseWhenMinining = 0.5f;
     private bool isMining = false;
+    [SerializeField] private float pauseWhenMinining = 0.5f;
     public MineurMovement() : base(TroopType.MiningTroop) { }
 
     private void OnCollisionEnter(Collision collision)
@@ -18,7 +18,6 @@ public class MineurMovement : AllyTroopMovement
     private IEnumerator WaitBeforeDestroying(GameObject collision)
     {
         isMining = true;
-        Debug.Log("here");
         StopTween();
 
         yield return new WaitForSeconds(pauseWhenMinining);
@@ -29,19 +28,8 @@ public class MineurMovement : AllyTroopMovement
             Mathf.RoundToInt(collision.transform.position.y),
             0
         );
-        Debug.Log(tweenEnCours);
-        if (tweenEnCours + 1 < path.Count)
-        {
-           
-            Vector3 direction = Vector3Int.RoundToInt(transform.position) - path[tweenEnCours + 1];
-            int compteur = 0;
-            
-            tweenEnCours -= compteur;
-            direction = path[tweenEnCours - compteur - 1] - Vector3Int.RoundToInt(transform.position);
-            TileGenerator.tileGenerator.DigCell(cell);
-            AudioManager.Instance.RockBroken();
         
-        }
+        TileGenerator.tileGenerator.DigCell(cell);
 
         if (path != null && path.Count > tweenEnCours)
         {
