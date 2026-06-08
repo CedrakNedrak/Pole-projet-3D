@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Golem : EnemyTroopMovement
 {
-    public Golem() : base(TroopType.NormalTroop) { }
+    public Golem() : base(TroopType.NormalTroop, Quaternion.identity) { }
 
     public override void ReStartMoving()
     {

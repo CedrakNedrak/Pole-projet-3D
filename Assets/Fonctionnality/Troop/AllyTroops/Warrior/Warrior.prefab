@@ -91,6 +91,18 @@ PrefabInstance:
       value: Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 5398070536776438142, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398070536776438142, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398070536776438142, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398070536776438142, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

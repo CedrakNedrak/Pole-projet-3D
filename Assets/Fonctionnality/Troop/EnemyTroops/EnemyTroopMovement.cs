@@ -2,21 +2,12 @@ using UnityEngine;
 
 public class EnemyTroopMovement : TroopMovement
 {
-    public EnemyTroopMovement(TroopType troopType) : base(troopType) { }
+    public EnemyTroopMovement(TroopType troopType, Quaternion rotationToFaceRight) : base(troopType, rotationToFaceRight) { }
 
     protected override void Start()
     {
         base.Start();
-
-        if (EntityManager.Instance != null)
-        {
-            EntityManager.Instance.RegisterEnemyTroop(this);
-        }
-        else
-        {
-            Debug.LogError("EntityManager.Instance is null! Make sure EntityManager is initialized before EnemyTroopMovement.");
-        }
-
+        EntityManager.Instance.RegisterEnemyTroop(this);
         ReStartMoving();
     }
 
@@ -67,8 +58,10 @@ public class EnemyTroopMovement : TroopMovement
             StartTween(path[tweenEnCours]);
             Rotate();
         }
-        else {
+        else
+        {
             ReStartMoving();
-            tweenEnCours = 0; }
+            tweenEnCours = 0;
+        }
     }
 }
