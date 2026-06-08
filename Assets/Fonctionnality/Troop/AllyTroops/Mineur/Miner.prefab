@@ -113,6 +113,9 @@ PrefabInstance:
     - target: {fileID: 4272399822916740232, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+    - target: {fileID: 2208268526438791752, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: m_TagString
+      value: Mineur
       objectReference: {fileID: 0}
     - target: {fileID: 4694166263858185579, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
       propertyPath: m_LocalPosition.x

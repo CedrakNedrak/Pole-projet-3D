@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -6,10 +9,6 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private GameObject townUICanvas;
     [SerializeField] private TownUI townUI;
     [SerializeField] private CameraMovement camera;
-
-    void Start()
-    {
-    }
 
     public void SpawnTown(Vector3 position, Quaternion rotation, string name, int startGold, int goldIncome, int townLevel, int buildPrice, int minerPrice, int upgradePrice, string initialTownName = "Abandoned Ruin")
     {

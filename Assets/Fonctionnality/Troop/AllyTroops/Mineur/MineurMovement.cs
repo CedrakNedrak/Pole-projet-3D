@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class MineurMovement : AllyTroopMovement
 {
-    [SerializeField] private float pauseWhenMinining = 0.5f;
     private bool isMining = false;
     public MineurMovement() : base(TroopType.MiningTroop, (Quaternion.Euler(0, 0, -90) * Quaternion.Euler(180, 0, 0))) { }
+    [SerializeField] private float pauseWhenMinining = 0.5f;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,7 +19,6 @@ public class MineurMovement : AllyTroopMovement
     private IEnumerator WaitBeforeDestroying(GameObject collision)
     {
         isMining = true;
-        Debug.Log("here");
         StopTween();
 
         yield return new WaitForSeconds(pauseWhenMinining);
