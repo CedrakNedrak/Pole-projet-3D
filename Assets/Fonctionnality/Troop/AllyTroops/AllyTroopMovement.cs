@@ -8,7 +8,7 @@ public class AllyTroopMovement : TroopMovement
         base.Start();
         EntityManager.Instance.RegisterAllyTroop(this);
     }
-    public AllyTroopMovement(TroopType troopType) : base(troopType) { }
+    public AllyTroopMovement(TroopType troopType, Quaternion rotationToFaceRight) : base(troopType, rotationToFaceRight) { }
 
     private Vector3 TakeEndPosition()
     {

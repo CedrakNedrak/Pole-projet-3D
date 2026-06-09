@@ -1,6 +1,6 @@
 public class EnemyTroopMovement : TroopMovement
 {
-    public EnemyTroopMovement(TroopType troopType) : base(troopType) { }
+    public EnemyTroopMovement(TroopType troopType, Quaternion rotationToFaceRight) : base(troopType, rotationToFaceRight) { }
 
     protected override void Start()
     {

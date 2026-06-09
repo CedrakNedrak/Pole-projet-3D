@@ -1,8 +1,8 @@
 ﻿<Solution>
   <Project Path="Tilemap.csproj" />
-  <Project Path="BattleSystem.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Towns.csproj" />
+  <Project Path="StateManager.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Golem.csproj" />
   <Project Path="Health.csproj" />

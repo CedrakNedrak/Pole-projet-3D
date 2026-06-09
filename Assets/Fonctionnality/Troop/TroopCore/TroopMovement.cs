@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class TroopMovement : CharaMovement
 {
@@ -14,6 +12,7 @@ public class TroopMovement : CharaMovement
 
     protected Vector3 endPosition;
     protected Vector3 startPosition = new Vector3(0, 2, 0);
+    protected Quaternion rotationToFaceRight;
     public static Dictionary<TroopMovement.TroopType, int[,]> TroopTypeToGrid { set; get; }
     protected virtual void Start()
     {
@@ -24,9 +23,10 @@ public class TroopMovement : CharaMovement
         };
     }
 
-    public TroopMovement(TroopType troopType)
+    public TroopMovement(TroopType troopType, Quaternion rotationToFaceRight)
     {
         this.troopType = troopType;
+        this.rotationToFaceRight = rotationToFaceRight;
     }
 
     public void StartMoving(Vector3 startPos, Vector3 endPos)
@@ -45,7 +45,7 @@ public class TroopMovement : CharaMovement
         );
 
         path = Pathfinding.pathfinding.Launch(startIntPosition, endIntPosition, TroopTypeToGrid[troopType]);
- 
+
         if (path == null || path.Count == 0)
             return;
 
@@ -64,19 +64,25 @@ public class TroopMovement : CharaMovement
         int compteur = 0;
         while (direction.x != 0 && direction.y != 0)
         {
-            compteur +=1;
-            direction = path[tweenEnCours-compteur] - Vector3Int.RoundToInt(transform.position);
+            compteur += 1;
+            direction = path[tweenEnCours - compteur] - Vector3Int.RoundToInt(transform.position);
         }
 
         if (direction == Vector3.zero)
             return;
 
-        float alpha = MathF.Atan2(direction.y, direction.x) * 180/ Mathf.PI;
-
-        if(direction.y ==0)
-            transform.rotation = Quaternion.Euler(180f, 0f, alpha+90);
-        if(direction.x ==0)
-            transform.rotation = Quaternion.Euler(180f, 0f, alpha-90);
+        //float alpha = MathF.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
+        //Quaternion rotation = Quaternion.identity;
+        //if (direction.y == 0)
+        //{
+        //    rotation = rotationToFaceRight * Quaternion.Euler(0, 0, alpha + 90);
+        //}
+        //else if (direction.x == 0)
+        //{
+        //   rotation = rotationToFaceRight * Quaternion.Euler(0, 0, alpha - 90);
+        //}
+        Quaternion rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.right, direction), Vector3.forward) * rotationToFaceRight;
+        transform.rotation = rotation;
     }
     public override void ChangeTween()
     {

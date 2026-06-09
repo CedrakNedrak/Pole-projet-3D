@@ -2,7 +2,8 @@
     "name": "Spawner",
     "rootNamespace": "",
     "references": [
-        "GUID:f5aa1ff052ffc8e4b9291a72fc23824e"
+        "GUID:f5aa1ff052ffc8e4b9291a72fc23824e",
+        "GUID:c8a5310eccb753547b43dae688fe2a54"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

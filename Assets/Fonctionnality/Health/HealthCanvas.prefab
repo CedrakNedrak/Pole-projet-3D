@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 284, y: 0}
-  m_SizeDelta: {x: 567, y: 65}
+  m_SizeDelta: {x: 551.12396, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3854437296513405996
 CanvasRenderer:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003d7d746655e33479e06ac3705ab444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 97.2
   barWidth: 567
   barHeight: 65
   healthBar: {fileID: 4492798342974306051}
