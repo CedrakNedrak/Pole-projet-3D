@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyTroopMovement : TroopMovement
 {
     public EnemyTroopMovement(TroopType troopType, Quaternion rotationToFaceRight) : base(troopType, rotationToFaceRight) { }

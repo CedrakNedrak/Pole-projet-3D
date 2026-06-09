@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Digger : EnemyTroopMovement
 {
-
     [SerializeField] private float pauseWhenMinining = 0.5f;
     private bool isMining = false;
     [SerializeField] float degatsParCoup = 5f;
@@ -24,7 +23,7 @@ public class Digger : EnemyTroopMovement
         {
             StartCoroutine(WaitBeforeDestroying(collision.gameObject));
         }
-       
+
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -53,7 +52,7 @@ public class Digger : EnemyTroopMovement
             Mathf.RoundToInt(collision.transform.position.y),
             0
         );
-        
+
         TileGenerator.tileGenerator.DigCell(cell);
 
         if (path != null && path.Count > tweenEnCours)

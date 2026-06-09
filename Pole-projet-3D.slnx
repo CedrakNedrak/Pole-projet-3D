@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Project Path="Tilemap.csproj" />
+  <Project Path="BattleSystem.csproj" />
   <Project Path="Towns.csproj" />
   <Project Path="StateManager.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
