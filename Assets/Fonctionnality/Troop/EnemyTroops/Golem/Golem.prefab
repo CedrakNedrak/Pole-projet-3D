@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2640598229928819773, guid: 1a2732316854b0541a4149db9188d888, type: 3}
+      propertyPath: charaMovement
+      value: 
+      objectReference: {fileID: 7994977185200750605}
     - target: {fileID: 4631946290048134361, guid: 1a2732316854b0541a4149db9188d888, type: 3}
       propertyPath: m_Name
       value: Golem

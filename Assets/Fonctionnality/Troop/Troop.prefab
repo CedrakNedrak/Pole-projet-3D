@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1512224810989324376}
   maxHealth: 100
+  charaMovement: {fileID: 6217905694999787627}
 --- !u!54 &2066998949014745076
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -226,6 +227,14 @@ PrefabInstance:
       value: HealthCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
@@ -240,6 +249,10 @@ PrefabInstance:
     - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 8433845888283198273, guid: 94f173a7e982ee34981cd7270a2b3686, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

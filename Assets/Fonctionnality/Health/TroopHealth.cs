@@ -4,6 +4,7 @@ public class TroopHealth : MonoBehaviour
 {
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float maxHealth;
+    [SerializeField] private CharaMovement charaMovement;
     private float health;
 
     private void Start()
@@ -16,14 +17,10 @@ public class TroopHealth : MonoBehaviour
     {
         healthBar.ChangeHealth(-damage);
         health = healthBar.health;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown("d"))
+        if (healthBar.health <= 0)
         {
-            TakeDamage(10);
+            charaMovement.StopTween();
+            Destroy(gameObject);
         }
     }
-
 }

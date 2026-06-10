@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CharaMovement : MonoBehaviour
 {
@@ -28,7 +27,7 @@ public class CharaMovement : MonoBehaviour
         else { tweenEnCours = 0; }
     }
 
-    protected void StopTween()
+    public void StopTween()
     {
         foreach (var tween in tweens)
         {
