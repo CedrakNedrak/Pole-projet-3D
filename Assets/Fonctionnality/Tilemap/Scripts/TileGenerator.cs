@@ -8,6 +8,12 @@ public class TileGenerator : MonoBehaviour
     [SerializeField] private EnemyCaverneGeneration enemyCaverneGeneration;
     [SerializeField] private FogOfWar fogOfWar;
 
+    [Header("Minerais")]
+    [SerializeField] private OreManager oreManager;
+    [SerializeField] private GameObject oreDecorationPrefab;
+    [SerializeField] private float oreChance = 0.02f;
+    [SerializeField] private float oreScale = 0.25f;
+
     [SerializeField] private Tilemap tilemap;
     public Tilemap Tilemap => tilemap;
 
@@ -31,7 +37,9 @@ public class TileGenerator : MonoBehaviour
     public int[,] NormalWorldIntMatrice => normalWorldIntMatrice;
 
     private bool fogInitialized = false;
+
     public Vector2 MainTownPosition { get; private set; }
+
     private void Awake()
     {
         worldMatrice = new GameObject[width, length];
@@ -60,7 +68,6 @@ public class TileGenerator : MonoBehaviour
             fogOfWar.InitializeFog();
             fogInitialized = true;
         }
-
     }
 
     private void GenerateTilemap()
@@ -82,9 +89,21 @@ public class TileGenerator : MonoBehaviour
 
                 worldMatrice[x, y] = gO;
 
-                // 2 = mur / bloc plein
                 miningWorldIntMatrice[x, y] = 2;
                 normalWorldIntMatrice[x, y] = -1;
+
+                if (oreManager != null && oreDecorationPrefab != null && Random.value < oreChance)
+                {
+                    GameObject oreObject = Instantiate(
+                        oreDecorationPrefab,
+                        position,
+                        Quaternion.identity,
+                        transform
+                    );
+                    oreObject.transform.localScale = Vector3.one * oreScale;
+
+                    oreManager.RegisterOre(position, oreObject);
+                }
             }
         }
     }
@@ -99,8 +118,7 @@ public class TileGenerator : MonoBehaviour
         if (!IsInBounds(x, y))
             return false;
 
-        // 1 = vide / creusé / accessible
-        return MiningWorldIntMatrice[x, y] == 1;//or normalWorldIntMatrice[x, y] == 1; ->same
+        return MiningWorldIntMatrice[x, y] == 1;
     }
 
     public void DigCell(Vector3Int cell)
@@ -116,6 +134,9 @@ public class TileGenerator : MonoBehaviour
 
         miningWorldIntMatrice[x, y] = 1;
         normalWorldIntMatrice[x, y] = 1;
+
+        if (oreManager != null)
+            oreManager.TryMineOre(cell);
 
         if (fogInitialized && fogOfWar != null)
             fogOfWar.RefreshVisibility(cell);
