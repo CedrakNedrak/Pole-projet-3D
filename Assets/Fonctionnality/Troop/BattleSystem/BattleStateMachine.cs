@@ -14,7 +14,7 @@ public class BattleStateMachine
     public BattleStateMachine(ITroopContext troopContext)
     {
         DefendState = new DefendState(this, 2f);
-        AttackState = new AttackState(this, 5f, 3f, 10f);
+        AttackState = new AttackState(this, 5f, 3f, 10f, 2f);
         PursueState = new PursueState(this, 10f);
         AlertState = new AlertState(this, 8f, 2f);
         currentState = DefendState;
@@ -53,7 +53,7 @@ public class BattleStateMachine
     {
         var (closestEnemy, r) = IdentifyClosestEnemy();
         currentState.r = r;
-        currentState.closestEnemy = closestEnemy;
+        currentState.ClosestEnemy = closestEnemy;
         foreach (Func<float, bool> condition in currentState.TransitionConditions.Keys)
         {
             if (condition(r))

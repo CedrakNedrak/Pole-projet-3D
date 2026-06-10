@@ -33,8 +33,8 @@ public class CharaMovement : MonoBehaviour
         foreach (var tween in tweens)
         {
             TweenManager.PausedTheTween(tween);
-            tweens = new List<Tween>();
         }
+        tweens = new List<Tween>();
     }
 
     protected void StartTween(Vector3Int end)

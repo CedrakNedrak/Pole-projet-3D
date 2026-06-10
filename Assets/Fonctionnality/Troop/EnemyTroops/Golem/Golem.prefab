@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6301458650927706455}
   - component: {fileID: 6039769238512836294}
   - component: {fileID: 2298967300848240950}
-  - component: {fileID: 4238572154713129688}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -87,29 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4238572154713129688
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8984991228640593302}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &71684011380929443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,6 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8792669072424553717, guid: 1a2732316854b0541a4149db9188d888, type: 3}
+    - {fileID: 7617180666279968410, guid: 1a2732316854b0541a4149db9188d888, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2289980642385794042, guid: 1a2732316854b0541a4149db9188d888, type: 3}
