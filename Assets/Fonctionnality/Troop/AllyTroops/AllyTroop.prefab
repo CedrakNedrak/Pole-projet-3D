@@ -13,6 +13,10 @@ PrefabInstance:
       value: Cursor
       objectReference: {fileID: 0}
     - target: {fileID: 397760806428779130, guid: 677e71f586601d44e9210ec35076dc1f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 397760806428779130, guid: 677e71f586601d44e9210ec35076dc1f, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -96,6 +100,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8494491552417061654, guid: 677e71f586601d44e9210ec35076dc1f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -119,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1082372309059019187, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1405499804338087622, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273700149964289636, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: enemyMask
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3167358385796481310, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -159,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4466561467482397931, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5636165885569348824, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.005
@@ -171,9 +195,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 6444188311805723445, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9203145010441218600, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
       propertyPath: m_Name
       value: AllyTroop
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203145010441218600, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8172066837938124223, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}

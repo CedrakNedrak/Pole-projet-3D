@@ -14,8 +14,16 @@ public class TroopMovement : CharaMovement
     protected Vector3 startPosition = new Vector3(0, 2, 0);
     protected Quaternion rotationToFaceRight;
     public static Dictionary<TroopMovement.TroopType, int[,]> TroopTypeToGrid { set; get; }
+    protected Vector3 nextEndPos;
+    protected bool endTweens;
+    protected bool isMoving;
+    public bool isBattling;
+
     protected virtual void Start()
     {
+        isMoving = false;
+        endTweens = false;
+        isBattling = false;
         TroopTypeToGrid = new Dictionary<TroopMovement.TroopType, int[,]>
         {
             { TroopMovement.TroopType.MiningTroop, TileGenerator.tileGenerator.MiningWorldIntMatrice },
@@ -29,7 +37,7 @@ public class TroopMovement : CharaMovement
         this.rotationToFaceRight = rotationToFaceRight;
     }
 
-    protected void StartMoving(Vector3 startPos, Vector3 endPos)
+    public void StartMoving(Vector3 startPos, Vector3 endPos)
     {
         startPosition = startPos;
         endPosition = endPos;
@@ -53,6 +61,7 @@ public class TroopMovement : CharaMovement
 
         Rotate();
         StartTween(path[0]);
+        isMoving = true;
     }
 
     protected void Rotate()
@@ -60,38 +69,51 @@ public class TroopMovement : CharaMovement
         if (path == null || tweenEnCours >= path.Count)
             return;
 
-        Vector3 direction = path[tweenEnCours] - Vector3Int.RoundToInt(transform.position);
-        int compteur = 0;
-        while (direction.x != 0 && direction.y != 0)
+        Vector3 direction = Vector3.zero;
+        if (tweenEnCours > 0)
         {
-            compteur += 1;
-            direction = path[tweenEnCours - compteur] - Vector3Int.RoundToInt(transform.position);
+            direction = path[tweenEnCours] - path[tweenEnCours - 1];
         }
+        else
+        {
+            direction = path[tweenEnCours] - Vector3Int.RoundToInt(transform.position);
+        }
+
 
         if (direction == Vector3.zero)
             return;
 
-        //float alpha = MathF.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
-        //Quaternion rotation = Quaternion.identity;
-        //if (direction.y == 0)
-        //{
-        //    rotation = rotationToFaceRight * Quaternion.Euler(0, 0, alpha + 90);
-        //}
-        //else if (direction.x == 0)
-        //{
-        //   rotation = rotationToFaceRight * Quaternion.Euler(0, 0, alpha - 90);
-        //}
         Quaternion rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.right, direction), Vector3.forward) * rotationToFaceRight;
         transform.rotation = rotation;
     }
     public override void ChangeTween()
     {
-        if (tweenEnCours < path.Count - 1)
+        if (!endTweens)
         {
-            tweenEnCours += 1;
-            StartTween(path[tweenEnCours]);
-            Rotate();
+            if (tweenEnCours < path.Count - 1)
+            {
+                tweenEnCours += 1;
+                StartTween(path[tweenEnCours]);
+                Rotate();
+            }
+            else { tweenEnCours = 0; isMoving = false; }
         }
-        else { tweenEnCours = 0; }
+        else
+        {
+            endTweens = false;
+            StopTween();
+            StartMoving(transform.position, nextEndPos);
+        }
+
+    }
+
+    public void EndTweensThenStartMovingTowards(Vector3 nextEndPos)
+    {
+        endTweens = true;
+        this.nextEndPos = nextEndPos;
+        if (!isMoving)
+        {
+            StartMoving(transform.position, nextEndPos);
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿<Solution>
   <Project Path="Tilemap.csproj" />
-  <Project Path="Towns.csproj" />
+  <Project Path="BattleSystem.csproj" />
   <Project Path="StateManager.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Towns.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Golem.csproj" />
   <Project Path="Health.csproj" />
@@ -10,14 +11,16 @@
   <Project Path="Spawner.csproj" />
   <Project Path="Cursor.csproj" />
   <Project Path="PathFinding.csproj" />
-  <Project Path="Troop.csproj" />
   <Project Path="Digger.csproj" />
   <Project Path="Motion.csproj" />
   <Project Path="CharaMovement.csproj" />
   <Project Path="Ressources.csproj" />
+  <Project Path="TroopCore.csproj" />
   <Project Path="Mineur.csproj" />
+  <Project Path="Faction.csproj" />
   <Project Path="EnemyTroops.csproj" />
   <Project Path="Managers.csproj" />
+  <Project Path="Troop.csproj" />
   <Project Path="Clickable.csproj" />
   <Project Path="Warrior.csproj" />
   <Project Path="Camera.csproj" />
