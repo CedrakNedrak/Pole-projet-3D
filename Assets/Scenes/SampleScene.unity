@@ -589,7 +589,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1046922565}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -821,6 +821,10 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174091795084864857, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
       objectReference: {fileID: 0}
@@ -1028,6 +1032,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 302
       objectReference: {fileID: 0}
+    - target: {fileID: 5894648771646564839, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6933748223377891009, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 200
@@ -1051,6 +1059,10 @@ PrefabInstance:
     - target: {fileID: 6933748223377891009, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069658348561609648, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6299271857659055996, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
@@ -1976,7 +1988,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1046922565}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 

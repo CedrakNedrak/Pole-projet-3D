@@ -9,7 +9,7 @@ public class EnemyBase : MonoBehaviour
     private bool pausedSpawn = false; 
     void Update()
     {
-        if(GameTimer.instance.Temps > 5 * 60 && firstTime)
+        if(GameTimer.instance.Temps > 2* 60 && firstTime)
         {
             firstTime = false;
             
