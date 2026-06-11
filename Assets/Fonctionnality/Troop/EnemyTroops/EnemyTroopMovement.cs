@@ -18,15 +18,17 @@ public class EnemyTroopMovement : TroopMovement
 
     void Update()
     {
-        if (HasFinishedMovement())
+        // While battling, the battle system fully owns movement (via
+        // EndTweensThenStartMovingTowards), so the wandering loop must stay out
+        // of the way to avoid stomping the pursuit tweens.
+        if (isBattling)
+            return;
+
+        // Resume wandering whenever the troop is idle and not in combat.
+        if (!isMoving)
         {
             StartNextMovement();
         }
-    }
-
-    private bool HasFinishedMovement()
-    {
-        return (path == null || path.Count <= tweenEnCours);
     }
 
     public void StartNextMovement()
@@ -52,6 +54,16 @@ public class EnemyTroopMovement : TroopMovement
 
     public override void ChangeTween()
     {
+        // Battle system requested a redirect: drop the current path and head to
+        // the latest target. This is what makes pursuit follow a moving enemy.
+        if (endTweens)
+        {
+            endTweens = false;
+            StopTween();
+            StartMoving(transform.position, nextEndPos);
+            return;
+        }
+
         if (tweenEnCours < path.Count - 1)
         {
             tweenEnCours += 1;
@@ -60,8 +72,11 @@ public class EnemyTroopMovement : TroopMovement
         }
         else
         {
-            ReStartMoving();
+            // Path finished: mark idle so EndTweensThenStartMovingTowards (and the
+            // wandering Update) can re-path, then wander again if not battling.
             tweenEnCours = 0;
+            isMoving = false;
+            ReStartMoving();
         }
     }
 }

@@ -10,7 +10,10 @@ public class DefendState : BaseState
         {(r) => (r < EnemyDetectionRadius()), BattleStateMachine.PursueState }
     };
     public override float EnemyDetectionRadius() => 10f;
-    public override void Enter() { }
+    public override void Enter()
+    {
+        TroopMovement().isBattling = false;
+    }
     public override void Update()
     {
         base.Update();

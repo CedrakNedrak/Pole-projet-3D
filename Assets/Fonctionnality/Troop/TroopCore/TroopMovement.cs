@@ -15,13 +15,15 @@ public class TroopMovement : CharaMovement
     protected Quaternion rotationToFaceRight;
     public static Dictionary<TroopMovement.TroopType, int[,]> TroopTypeToGrid { set; get; }
     protected Vector3 nextEndPos;
-    private bool endTweens;
+    protected bool endTweens;
     protected bool isMoving;
+    public bool isBattling;
 
     protected virtual void Start()
     {
         isMoving = false;
         endTweens = false;
+        isBattling = false;
         TroopTypeToGrid = new Dictionary<TroopMovement.TroopType, int[,]>
         {
             { TroopMovement.TroopType.MiningTroop, TileGenerator.tileGenerator.MiningWorldIntMatrice },

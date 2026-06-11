@@ -21,6 +21,7 @@ public class AttackState : BaseState
     public override float EnemyDetectionRadius() => 10f;
     public override void Enter()
     {
+        TroopMovement().isBattling = true;
         timeSinceLastAttack = AttackDelay;//so that the troop can attack as soon as it enters Attack State
     }
     public override void Update()

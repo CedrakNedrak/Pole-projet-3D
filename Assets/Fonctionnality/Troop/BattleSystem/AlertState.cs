@@ -18,6 +18,7 @@ public class AlertState : BaseState
     public override float EnemyDetectionRadius() => 10f;
     public override void Enter()
     {
+        TroopMovement().isBattling = false;
         Mono().StartCoroutine(StayInAlert());
     }
     public override void Update()
@@ -29,6 +30,9 @@ public class AlertState : BaseState
     private IEnumerator StayInAlert()
     {
         yield return new WaitForSeconds(stayInAlertDuration);
-        //change state to defend after the alert duration, only if state hasn't changed to pursue
+        if (BattleStateMachine.currentState == BattleStateMachine.AlertState)//change, it has maybe changed to another state then back to alertState
+        {
+            BattleStateMachine.ChangeState(BattleStateMachine.DefendState);
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BattleStateMachine
 {
-    private BaseState currentState;
+    public BaseState currentState;
     public readonly ITroopContext troopContext;
 
     public readonly DefendState DefendState;
