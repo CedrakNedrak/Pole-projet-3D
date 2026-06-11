@@ -19,7 +19,10 @@ public class TroopHealth : MonoBehaviour
         health = healthBar.health;
         if (healthBar.health <= 0)
         {
-            charaMovement.StopTween();
+            if (charaMovement)
+            {
+                charaMovement.StopTween();
+            }
             Destroy(gameObject);
         }
     }

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2273700149964289636, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
+      propertyPath: enemyMask
+      value: Ally
+      objectReference: {fileID: 0}
     - target: {fileID: 3167358385796481310, guid: 41b1aab6bfd838a40b103465829c3267, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

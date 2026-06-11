@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9119988374345704964, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: troopMovement
+      value: 
+      objectReference: {fileID: -5565129385192229893}
     m_RemovedComponents:
     - {fileID: -4007483958824861737, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
     - {fileID: 3987668566724438027, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
@@ -230,6 +234,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   troopMovement: {fileID: -5565129385192229893}
+  defendStateRadius: 2
+  attackStateRadius: 5
+  attackRange: 3
+  attackPower: 10
+  attackDelay: 2
+  pursueStateRadius: 10
+  alertStateRadius: 8
+  alertStateDuration: 2
 --- !u!1 &3618888942528061036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 214516439420687715, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}

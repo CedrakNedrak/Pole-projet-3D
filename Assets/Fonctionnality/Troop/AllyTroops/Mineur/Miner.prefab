@@ -202,9 +202,14 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9119988374345704964, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+      propertyPath: troopMovement
+      value: 
+      objectReference: {fileID: 1887933262717066005}
     m_RemovedComponents:
     - {fileID: -4007483958824861737, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
     - {fileID: 3987668566724438027, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
+    - {fileID: 9119988374345704964, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4694166263858185579, guid: 1a360552b7772ac469da9c0803c5fd1e, type: 3}

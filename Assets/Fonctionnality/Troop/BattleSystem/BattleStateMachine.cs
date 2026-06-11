@@ -11,12 +11,15 @@ public class BattleStateMachine
     public readonly PursueState PursueState;
     public readonly AlertState AlertState;
 
-    public BattleStateMachine(ITroopContext troopContext)
+    private string enemyMask;
+
+    public BattleStateMachine(ITroopContext troopContext, string enemyMask, float defendStateRadius, float attackStateRadius, float attackRange, float attackPower, float attackDelay, float pursueStateRadius, float alertStateRadius, float alertStateDuration)
     {
-        DefendState = new DefendState(this, 2f);
-        AttackState = new AttackState(this, 5f, 3f, 10f, 2f);
-        PursueState = new PursueState(this, 10f);
-        AlertState = new AlertState(this, 8f, 2f);
+        this.enemyMask = enemyMask;
+        DefendState = new DefendState(this, defendStateRadius);
+        AttackState = new AttackState(this, attackStateRadius, attackRange, attackPower, attackDelay);
+        PursueState = new PursueState(this, pursueStateRadius);
+        AlertState = new AlertState(this, alertStateRadius, alertStateDuration);
         currentState = DefendState;
         this.troopContext = troopContext;
     }
@@ -34,7 +37,7 @@ public class BattleStateMachine
 
     public (Collider, float) IdentifyClosestEnemy()
     {
-        Collider[] enemiesInRange = Physics.OverlapSphere(troopContext.Position(), currentState.EnemyDetectionRadius(), LayerMask.GetMask("Enemy"));
+        Collider[] enemiesInRange = Physics.OverlapSphere(troopContext.Position(), currentState.EnemyDetectionRadius(), LayerMask.GetMask(enemyMask));
         float minDistance = float.MaxValue;
         Collider closestEnemy = null;
         foreach (Collider collider in enemiesInRange)

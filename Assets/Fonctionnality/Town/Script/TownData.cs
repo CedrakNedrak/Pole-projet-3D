@@ -22,8 +22,8 @@ public class TownData : MonoBehaviour
     [SerializeField] private GameObject[] townsLevelSprite;
     public GameObject[] TownsLevelSprite => townsLevelSprite;
     public CameraMovement cameraMovement { get; private set; }
-    [SerializeField] private HealthTown healthTown;
-    public HealthTown HealthTown => healthTown;
+    [SerializeField] private TroopHealth townHealth;
+    public TroopHealth TownHealth => townHealth;
 
     public void SetTownName(string name)
     {

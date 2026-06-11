@@ -33,7 +33,7 @@ public class Digger : EnemyTroopMovement
             if (timer >= tempsEntreCoups)
             {
                 Debug.Log("Toucher");
-                collision.gameObject.GetComponent<TownData>().HealthTown.SubirDegats(degatsParCoup);
+                collision.gameObject.GetComponent<TownData>().TownHealth.TakeDamage(degatsParCoup);
                 timer = 0f;
             }
         }
