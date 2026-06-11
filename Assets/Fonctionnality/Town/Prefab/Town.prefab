@@ -78,7 +78,7 @@ MonoBehaviour:
   townsLevelSprite:
   - {fileID: 1813907173336600274}
   - {fileID: 298346444893514405}
-  healthTown: {fileID: 0}
+  townHealth: {fileID: 0}
 --- !u!114 &101801839776644569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c31fc5ac511a29848920b38359f22374, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

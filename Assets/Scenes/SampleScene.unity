@@ -728,6 +728,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 566469880219588900, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 633122467347827019, guid: 96b2a195d6ba0f04d93dd9f1854412dc, type: 3}
       propertyPath: townUI
       value: 
