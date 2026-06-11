@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnInterval;
     private int enemyCount = 0;
     private float timer;
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -25,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
             timer = 0f;
         }
     }
-    
+
     public void EnemyDestroyed()
     {
         enemyCount -= 1;

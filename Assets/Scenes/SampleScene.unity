@@ -2046,6 +2046,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 512573451625662264, guid: 4f62609ee3c4a0642a11605f0d48007a, type: 3}
+      propertyPath: golem
+      value: 
+      objectReference: {fileID: 4663854162624028538, guid: 250b2beb35938cf4c8d83324cf53c4e7, type: 3}
+    - target: {fileID: 512573451625662264, guid: 4f62609ee3c4a0642a11605f0d48007a, type: 3}
       propertyPath: camera
       value: 
       objectReference: {fileID: 330585548}
